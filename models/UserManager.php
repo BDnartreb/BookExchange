@@ -11,7 +11,7 @@ class UserManager extends AbstractEntityManager
      */
     public function registrate() : array
     {
-        $sql = "INSERT INTO `user` (`pseudo`, `email`,`password`, `registration_date`, `avatar_url`) VALUES
+        /*$sql = "INSERT INTO `user` (`pseudo`, `email`,`password`, `registration_date`, `avatar_url`) VALUES
 ('BB', 'BB@home.fr', '', '2024-09-17 11:31:37', ''),
 
 INSERT INTO user FROM book LEFT JOIN user ON book.id_user = user.id WHERE book.status='1'";
@@ -24,10 +24,52 @@ INSERT INTO user FROM book LEFT JOIN user ON book.id_user = user.id WHERE book.s
             $book = new Book($bookArray);
             $books[] = $book;
         }
-        return $books;
+        return $books;*/
     }
 
-    
+    /**
+     * Gets user information and number of books from user and book tables of the bookexchange database
+     * @param : int $id 
+     * @return User|null
+     */
+    public function getUserInfo(int $id) : ?User
+    {
+        $sql="SELECT user.*, COUNT(DISTINCT book.id_user) as bookCount FROM user LEFT JOIN book ON user.id = book.id_user WHERE user.id = :id";
 
+        $result = $this->db->query($sql, ['id' => $id]);
+        $userInfo = $result->fetch();
+        if ($userInfo){
+            return new User($userInfo);
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Update User Information
+     * Gets user information and number of books from user and book tables of the bookexchange database
+     * @param : int $id 
+     * @return void
+     */
+    public function updateUserInfo(int $id) : void
+    {
+        $sql="UPDATE";
+
+    }
+
+    public function getMessaging(int $id) : ?Messaging
+    {
+//        $sql="SELECT * FROM messaging LEFT JOIN user WHERE user.id = :id AND messaging.id_user = user.id";
+        
+        $result = $this->db->query($sql);
+        $messaging = [];
+
+        while ($message = $result->fetch()) {
+            $messages = new Messaging($message);
+            $messaging[] = $messages;
+        }
+        return $messaging;
+
+    }
 
 }

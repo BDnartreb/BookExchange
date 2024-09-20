@@ -12,7 +12,7 @@
         <!--<a class="link-button" href="#welcomeanchor">Découvrir</a>-->
     </div>
     <div>
-        <img src="">
+        <img src="./images/HomePicture1.png">
     </div>
 </section>
 <section class="gallery">
@@ -52,7 +52,7 @@
         <a class="link-button" href="index.php?action=gallery">Voir tous les livres</a>
     </div>
     <div>
-        <img src="./images/LargePicture.png" class="large-picture">
+        <img src="./images/HomePicture2-Desk.png" class="home-picture-2">
     </div>
 </section>
 <section class="values">

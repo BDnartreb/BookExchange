@@ -24,6 +24,25 @@ class BookManager extends AbstractEntityManager
         return $books;
     }
 
+    /**
+     * Gets all the books sold by a user.
+     * @param int $idUser
+     * @return : array
+     */
+    public function getBooksByUser(int $idUser) : array
+    {
+       $sql = "SELECT * FROM book WHERE id_user=:idUser";
+       /* 
+        $result = $this->db->query($sql);
+        $books = [];
+
+        while ($bookArray = $result->fetch()) {
+            $book = new Book($bookArray);
+            $books[] = $book;
+        }
+        return $books;*/
+    }
+
 /*SUPPR IF NOT USED!!!!!!!*/
      /**
      * Compares params with a predefined list to protect from XSS attacks
@@ -48,11 +67,11 @@ class BookManager extends AbstractEntityManager
      * @param int $id : id of the book
      * @return Book|null : Book or null if the book doesn't exist
      */
-    public function getBookById(int $id) : ?Book
+    public function getBook(int $id) : ?Book
     {
-        $sql = "SELECT * FROM book WHERE id = :id";
+        $sql = "SELECT book.*, user.pseudo, user.avatar_url FROM book LEFT JOIN user ON book.id_user = user.id WHERE book.id = :id";
         $result = $this->db->query($sql, ['id' => $id]);
-        $article = $result->fetch();
+        $book = $result->fetch();
         if ($book) {
             return new Book($book);
         }
@@ -76,6 +95,17 @@ class BookManager extends AbstractEntityManager
             'status' => $status->getStatus(),
             'id_user' => $article->getUserId()
         ]);
+    }
+
+        /**
+     * Delete book information
+     * @param int $id : id of the book to delete
+     * @return void
+     */
+    public function deleteBook(int $id) : void
+    {
+        $sql = "DELETE";
+
     }
 
 }

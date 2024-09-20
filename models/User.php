@@ -11,6 +11,7 @@
     private string $password;
     private DateTime $registrationDate;
     private string $avatarUrl;
+    private ?int $bookCount;
     
     /**
      * Setter for pseudo
@@ -48,7 +49,7 @@
     
 
     /**
-     * Setter fo password
+     * Setter for password
      * @param : string $password
      */
     public function setPassword($password) : void
@@ -82,7 +83,7 @@
 
     /**
      * Getter for date of registration
-     * @return string $registrationDate
+     * @return DateTime $registrationDate
      */
     Public function getRegistrationDate() : DateTime
     {
@@ -108,6 +109,27 @@
 
     }
 
+    /**
+     * Setter for bookCount
+     * @param : int $bookCount
+     */
+
+    public function setBookCount(?int $bookCount) : void
+    {
+        $this->bookCount = $bookCount;
+    }
+
+    /**
+     * Getter for bookCount
+     * @return int $bookCount
+     */
+
+     public function getBookCount() : int
+     {
+        return $this->bookCount;
+     }
+
+    
 
 }
 

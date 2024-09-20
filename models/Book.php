@@ -6,14 +6,14 @@
  */
  class Book extends AbstractEntity 
  {
-    private string $title = "";
-    private string $author = "";
-    private string $image = "";
-    private string $description = "";
+    private string $title;
+    private string $author;
+    private string $image;
+    private string $description;
     private bool $status;
-    private int $userId;
-    private string $pseudo;
-    
+    private int $idUser;
+    private ?string $pseudo;
+    private ?string $avatarUrl;   
 
     
     /**
@@ -78,7 +78,7 @@
     * @param string $description  
     */
 
-    public function setDescription($description) : void
+    public function setDescription(string $description) : void
     {
         $this->description = $description;
     }
@@ -108,7 +108,7 @@
     * @param bool $status
     */
     
-    public function setStatus($status) : void
+    public function setStatus(bool $status) : void
     {
         $this->status = $status;
     }
@@ -123,27 +123,27 @@
     }
 
     /**
-    * Setter for userId
-    * @param int $userId
+    * Setter for user Id
+    * @param int $idUser
     */
-    public function setUserId($userId) : void
+    public function setIdUser(int $idUser) : void
     {
-        $this->userId = $userId;
+        $this->userId = $idUser;
     }
     /**
-    * Getter for userId
-    * @return int $userId
+    * Getter for user Id
+    * @return int $idUser
     */
-    public function getUserId() : int
+    public function getIdUser() : int
     {
-        return $this->userId;
+        return $this->idUser;
     }     
 
     /**
      * Setter for pseudo
-     * @param string $pseudo
+     * @param string|null $pseudo
      */
-    public function setPseudo($pseudo) : void
+    public function setPseudo(?string $pseudo) : void
     {
         $this->pseudo = $pseudo;
     }
@@ -151,9 +151,26 @@
     /**Getter for pseudo
      * @return string $pseudo
      */
-    public function getPseudo() : string
+    public function getPseudo() : ?string
     {
         return $this->pseudo;
+    }
+
+    /**
+     * Setter for user's avatar URL
+     * @param string|null $avatarUrl
+     */
+    public function setAvatarUrl(?string $avatarUrl) : void
+    {
+        $this->avatarUrl = $avatarUrl;
+    }
+
+    /**Getter for user's avatar URL
+     * @return string $avatarUrl
+     */
+    public function getAvatarUrl() : ?string
+    {
+        return $this->avatarUrl;
     }
  }
 
