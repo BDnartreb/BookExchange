@@ -8,7 +8,7 @@
 <section class="book">
     <a href="">Nos livres</a><p> > <?= $book->getTitle() ?></p>
     <div class="book-picture">
-        <img src="<?= $book->getImage() ?>" alt="">
+        <img src="./images/<?= $book->getImage() ?>" alt="">
     </div>
     <div class="book-text">
         <div>

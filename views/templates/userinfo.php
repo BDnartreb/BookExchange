@@ -9,12 +9,12 @@
     <h1>Mon compte</h1>
     <div class="user_personnal_info">
         <div class="user-visitcard">
-            <img src="" alt=""><!--avatarUrl-->
+            <img src="" alt="">
             <p>modifier</p>
-            <h2>AJOUTER Pseudo</h2>
+            <h2><?= $user->getPseudo()?></h2>
             <p>Membre depuis AJOUTER DUREE </p>
             <p>BIBLIOTHEQUE</p>
-            <p>icone_livres AJOUTER NOMBRE livres</p>
+            <p>icone_livres <?=$user->getBookCount()?> livres</p>
         </div>
         <div class="modif-info">
             <h2>Vos informations personnelles</h2>

@@ -45,9 +45,24 @@ CREATE TABLE IF NOT EXISTS `book` (
 --
 
 INSERT INTO `book` (`id`, `title`, `author`, `image`, `description`, `status`, `id_user`) VALUES
-(1, 'Esther', 'Alabaster', './Images/Esther.png ', 'Description Esther', '1', '2'),
-(2, 'The Kinfolk Table', 'Nathan Williams', './Images/TheKinfolkTable.png', 'Description The Kinfolk Table', '0', '1'),
-(3, 'Wabi Sabi', 'Beth Kempton', './Images/WabiSabi.png ', 'Description Wabi Sabi', '1', '1');
+(1, 'Esther', 'Alabaster', 'Esther.png ', 'Description Esther', '1', '1'),
+(2, 'The Kinfolk Table', 'Nathan Williams', 'TheKinfolkTable.png', 'Description The Kinfolk Table', '1', '2'),
+(3, 'Wabi Sabi', 'Beth Kempton', 'WabiSabi.png ', 'Description Wabi Sabi', '1', '2'),
+(4, 'Milk & honey', 'Rupi Kaur', 'MilkHoney.png ', 'Description Milk & honey', '1', '3'),
+(5, 'Delight!', 'Justin Rossow', 'Delight.png ', 'Description Delight', '1', '4'),
+(6, 'Milwaukee Mission', 'Elder Cooper Low', 'MilwaukeeMission.png ', 'Description Milwaukee Mission', '1', '5'),
+(7, 'Minimalist Graphics', 'Julia Schonlau', 'MinimalistGraphics.png ', 'Description Minimalist Graphics', '1', '6'),
+(8, 'Hygge', 'Meik Wiking', 'Hygge.png', 'Description Hygge', '1', '16'),
+(9, 'Innovation', 'Matt Ridley', 'Innovation.png ', 'Description Innovation', '1', '7'),
+(10, 'Psalms', 'Alabaster', 'Psalms.png ', 'Description Psalms', '1', '8'),
+(11, 'Thinking, Fast & Slow', 'Daniel Kahneman', 'ThinkingFastSlow.png ', 'Description Thinking, Fast & Slow', '1', '9'),
+(12, 'A Book Full Of Hope', 'Rupi Kaur', 'ABookFullOfHope.png ', 'Description A Book Full Of Hope', '1', '10'),
+(13, 'The Subtle Art Of...', 'Mark Manson', 'TheSubtleArtOf.png ', 'Description The Subtle Art Of...', '1', '11'),
+(14, 'Narnia', 'C.S Lewis', 'Narnia.png ', 'Description Narnia', '1', '12'),
+(15, 'Company Of One', 'Paul Jarvis', 'CompanyOfOne.png ', 'Description Company Of One', '1', '14'),
+(16, 'The Two Towers', 'J.R.R Tolkien', 'TheTwoTowers.png ', 'Description The Two Towers', '1', '15'),
+(17, '17', 'Beth Kempton', 'WabiSabi.png ', 'Description 18', '1', '1'),
+(18, '18', 'Beth Kempton', 'WabiSabi.png ', 'Description 19', '1', '1');
 
 -- --------------------------------------------------------
 
@@ -66,14 +81,36 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
+--
+-- Hydrates table `user`
+--
+
+INSERT INTO `user` (`id`, `pseudo`, `email`,`password`, `registration_date`, `avatar_url`) VALUES
+(1, 'CamilleClubLit', 'Camille@home.fr', '', '2023-09-17', ''),
+(2, 'Alexlecture', 'Alexlect@home.fr', '', '18/09/2023', ''),
+(3, 'Hugo1990_12', 'Hugo@home.fr', '', '2023-09-18', ''),
+(4, 'Juju1432', 'juju@home.fr', '', '2023-12-19', ''),
+(5, 'Christiane75014', 'cricri@paris.fr', '', '2024-01-20', ''),
+(6, 'Hamzalecture', 'Ham@home.fr', '', '2024-02-21', ''),
+(7, 'Lou&Ben50', 'louben@home.fr', '', '2024-03-22', ''),
+(8, 'Lolobzh', 'lolo@brest.fr', '', '2024-04-23', ''),
+(9, 'Sas634', 'sanssas@home.fr', '', '2024-05-24', ''),
+(10, 'ML95', 'ML@home.fr', '', '2024-06-06', ''),
+(11, 'Verogo33', 'vero@home.fr', '', '2024-06-25', ''),
+(12, 'AnnikaBrahms', 'annibrahms@home.fr', '', '2024-07-25', ''),
+(13, 'Paul Jarvis', 'polo@home.fr', '', '2024-08-25', ''),
+(14, 'Victoirefabr912', 'vic@home.fr', '', '2024-09-12', ''),
+(15, 'Lotrfanclub67', 'lotrfanclub@home.fr', '', '2024-09-21', ''),
+(16, 'Hugo1990_12', 'Ugo@home.fr', '', '2024-09-22', '');
+
 -- --------------------------------------------------------
 
 --
 -- Structure of the table `messaging`
 --
 
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
+DROP TABLE IF EXISTS `messaging`;
+CREATE TABLE IF NOT EXISTS `messaging` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `message` text NOT NULL,
   `sender_id` int(11) NOT NULL,
@@ -87,14 +124,6 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 
 
-
---
--- Hydrates table `user`
---
-
-INSERT INTO `user` (`id`, `pseudo`, `email`,`password`, `registration_date`, `avatar_url`) VALUES
-(1, 'BB', 'BB@home.fr', '', '2024-09-17 11:31:37', ''),
-('2', 'Joe', 'Joe@home.fr', '', '18/09/2024', '');
 --
 -- Contraints for tables
 --

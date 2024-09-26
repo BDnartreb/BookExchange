@@ -46,6 +46,23 @@ INSERT INTO user FROM book LEFT JOIN user ON book.id_user = user.id WHERE book.s
     }
 
     /**
+     * Create a new User in the database
+     * @param : array $user
+     * @return bool $result //check the increase of rows in the database to validate the insert
+     */
+    public function addUser($user) : bool
+    {
+        $sql="INSERT INTO user (`pseudo`, `email`, `password`, `registration_date`) VALUES (:pseudo, :email, :password, NOW())";
+
+        $result=$this->db->query($sql, [
+            'pseudo' => $user->getPseudo(),
+            'email' => $user->getEmail(),
+            'password' => $user->getPassword()
+        ]);
+        return $result->rowCount() >0;
+    }
+
+    /**
      * Update User Information
      * Gets user information and number of books from user and book tables of the bookexchange database
      * @param : int $id 

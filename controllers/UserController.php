@@ -4,6 +4,18 @@
 
 class UserController {
 
+    /**
+     * Check if the user is connected
+     * @return void
+     */
+    private function checkIfUserIsConnected() : void
+    {
+        if (!isset($_SESSION['user'])) {
+            Utils::redirect("connection");
+        }
+    }
+
+
         /**
      * Displays registration page
      * @return void
@@ -39,9 +51,43 @@ class UserController {
         $userManager = new UserManager();
         $user = $userManager->getUserInfo($id);
 
-        $view = new View("UserInfo");
+        var_dump($user);
+
+        $view = new View("User");
         $view->render("userinfo", ['user' => $user]);
     }
+
+    /**
+     * Insert a new user
+     * @param : string $pseudo, string $email, string $password
+     * @return void
+     */
+
+     public function addUser() : void 
+     {
+        $pseudo = Utils::request("pseudo");
+        $email = Utils::request("email");
+        $password = Utils::request("password");
+
+        if (empty($pseudo) || empty($email) || empty($password)){
+            throw new Exception ("Tous les champs sont obligatoires. Votre demande d'inscription n'a malheureusement pas pu être prise en compte."); 
+        }
+
+        $user = new User([
+            'pseudo' => $pseudo,
+            'email'=> $email,
+            'password' => $password,
+        ]);
+
+        $userManager = new UserManager();
+        $result = $userManager->addUser($user);
+
+        if (!$result) {
+            throw new Exception ("user non créé !");
+        }
+ 
+         Utils::redirect('connection');
+      }
 
         /**
      * Update user information
@@ -67,11 +113,11 @@ class UserController {
 
      public function showUserProfil() : void
      {
-        $idUser = Utils::request("id");
+        /*$idUser = Utils::request("id");
         if (empty($idUser)) {
             throw new Exception("Préciser l'id de l'utilisateur à afficher");
-        }
-
+        }*/
+        $idUser = 1;
          $userManager = new UserManager();
          $user = $userManager->getUserInfo($idUser);
  

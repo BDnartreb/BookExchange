@@ -7,7 +7,6 @@ abstract class AbstractEntity
 
     /**
      * hydrates the entity with the array in params
-     * 
      * @param array $data
      */
     public function __construct(array $data = []) 

@@ -8,25 +8,24 @@
 <section class="registration">
     <div class="registration-forms">
         <h1>Inscription</h1>
-        <p>Pseudo</p>
-        <form class="registration-form" method="get" action="#">
-        <input class="book-search" type="text" name="pseudo" id="" size="30" maxlength="120">
-        <p>Adresse email</p>
-        <form class="registration-form" method="get" action="#">
-        <input class="book-search" type="text" name="email" id="" size="30" maxlength="120">
-        <p>Mot de passe</p>
-        <form class="registration-form" method="get" action="#">
-        <input class="book-search" type="text" name="password" id="" size="30" maxlength="120">
+        <form class="registration-form" method="get" action="index.php">
+            <div>
+                <label for="pseudo"><p>Pseudo</p></label>   
+                <input class="search" type="text" name="pseudo" id="pseudo" required size="30" maxlength="120">
 
-        <input class="registrate-button" type="submit" value="S'inscrire">
-
+               <label for="pseudo"><p>Adresse Email</p></label>  
+                <input class="search" type="text" name="email" id="email" required size="30" maxlength="120">
+               
+                <label for="pseudo"><p>Mot de passe</p></label> 
+                <input class="search" type="text" name="password" id="password" required size="30" maxlength="120">
+            </div>
+            <div class="submit-button">
+                <input type="hidden" name="action" value="adduser">
+                <input class="registration-button" type="submit" value="S'inscrire">
+            </div>
         </form>
     </div>
     <div class="registration-picture">
         <img src="./images/RegistrationPicture.png" alt="">
     </div>
-
-
-</div>
-
 </section>

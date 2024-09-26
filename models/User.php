@@ -9,8 +9,8 @@
     private string $pseudo;
     private string $email;
     private string $password;
-    private DateTime $registrationDate;
-    private string $avatarUrl;
+    private ?DateTime $registrationDate;
+    private ?string $avatarUrl;
     private ?int $bookCount;
     
     /**
@@ -83,7 +83,7 @@
 
     /**
      * Getter for date of registration
-     * @return DateTime $registrationDate
+     * @return DateTime|null $registrationDate
      */
     Public function getRegistrationDate() : DateTime
     {
@@ -101,9 +101,9 @@
     
     /**
      * Getter for user profil avatar
-     * @return string $avatarUrl
+     * @return string|null $avatarUrl
      */
-    public function getAvatarUrl() : string
+    public function getAvatarUrl() : ?string
     {
         return $this->avatarUrl;
 

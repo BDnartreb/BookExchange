@@ -41,6 +41,11 @@ try {
             $userController->showRegistration();
             break;
 
+        case 'adduser':
+            $userController = new UserController();
+            $userController->addUser();
+            break;
+
         case 'connection':
             $userController = new UserController();
             $userController->showConnection();

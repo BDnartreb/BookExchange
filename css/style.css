@@ -1,11 +1,309 @@
+/**
+*   Header
+*   footer
+*book
+*   connection
+*editbook
+*errorpage
+*   gallery
+*home
+*   main
+*messaging
+*   registration
+*userinfo
+*userprofil
+*/
+
+
 h1 {
+    size : 36px;
+    font-weight: 400;
+    color: #000000;
+}
+
+h2 {
+    color:#000000;
+}
+
+.search {
+    align-items: center;
+    background-color: orange;
+    width:322px;
+    height: 50px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+/**
+* header
+*/
+header {
+    display: flex;
+    flex-direction: row;
+    height: 80px;
+    background-color: #F5F3EF;
+}
+
+.logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 155px;
+    height: 51px;
+    margin-top: 15px;
+    margin-left: 100px;
+}
+
+.TT-logo-greenbackground{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 51px;
+    height: 51px;
+    border-radius: 8.5px;
+    background-color: #00AC66;
+}
+
+.main-nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between ;
+    width: 80%;
+    margin-left: 150px;
+}
+
+nav a {
+    size: 14px;
+    color: #292929;
+    text-decoration: none;
+}
+
+svg {
+    padding-right: 5px;
+}
+.nav-link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-right: 40px;
+}
+
+.main-nav-1{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.main-nav-2{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-right: 150px;
+}
+
+.icone-messaging{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.icone-message-count{
+    background-color: black;
+    width: 10.5px;
+    height: 15px;
+    border-radius: 6.75px;
+    margin-left: 5px;
+}
+
+
+/**
+* main
+*/
+
+main {
+    background-color: #f5f0e0;
+    display: flex;
+    justify-content: center;
+}
+
+
+/**
+* Gallery
+*/
+
+.gallery {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 900px;
+    height: 1770px;
+}
+
+.gallery-title {
+    display: flex;
+    flex-direction: row;
+    width:100%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: greenyellow;
+}
+
+.book-cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width:900px;
+}
+
+.book-cards a {
+    text-decoration: none;    
+}
+
+.card-content{
+    display: flex;
+    flex-direction: column;
+    width : 200px;
+    height : 324px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: white;
+}
+
+.card-content img{
+    width: 200px;
+    height: 200px;
+}
+
+.card-txt {
+    display: flex;
+    flex-direction: column;
+    width: 190px;
+    height: 124px;
+    padding-left: 10px;
+}
+
+.card-title {
+    color:#000000;
+    size: 16px;
+    font-weight: 400;
+    margin-top: 15px;
+    margin-bottom: 0px;
+}
+
+.card-author {
+    color:#A6A6A6;
+    size: 16px;
+    font-weight: 400;
+    margin-top: 8px;
+    margin-bottom: 0px;
+}
+
+.card-vendor {
+    color:#A6A6A6;
+    size: 10px;
+    font-style: italic;
+    font-weight: 400;
+    margin-top: 20px;
+    margin-bottom: 4px;
+}
+
+/**
+* connection / registration
+*/
+.registration {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.registration-forms {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-left: 150px;
+
+}
+
+.registration-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.registration-button {
+    width: 322px;
+    height: 63px;
+    padding: 22px 38px 22px 38px;
+    border-radius: 10px;
+    margin-top: 20px;
+    background-color: #00AC66;
+}
+
+.registration-picture {
+    width: 50%;
+}
+
+.registration-picture img {
+    width: 720px;
+    height: 886px
+}
+
+/**
+* userinfo / userprofil
+*/
+.userinfo h1{
     color: red;
 }
+
+.userinfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.user_personnal_info{
+    display: flex;
+    flex-direction: row;
+}
+
+.user-visitcard{
+    display: flex;
+    flex-direction: column;
+}
+
+.modif-info{
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+/**
+* footer
+*/
 
 footer {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    color: red;
+    align-items: center;
+    height: 61px;
+    padding-right: 46px;
+    background-color: #FFFFFF;
+}
+
+footer a {
+    size: 12px;
+    color: #292929;
+    text-decoration: none;
+    margin-right: 30px;
+}
+
+.fa-copyright{
+    size: 12px;
+    color: #292929; 
 
 }
