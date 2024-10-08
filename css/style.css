@@ -2,11 +2,11 @@
 *   Header
 *   footer
 *book
-*   connection
+*connection
 *editbook
 *errorpage
-*   gallery
-*home
+*   gallery SUBMIT BUTTON on the magnifying-glass
+*   home CENTER TXT part "Comment ça marche?"
 *   main
 *messaging
 *   registration
@@ -16,22 +16,61 @@
 
 
 h1 {
-    size : 36px;
+    font-style: "Playfair Display";
+    font-size : 36px;
     font-weight: 400;
     color: #000000;
 }
 
 h2 {
+    font-size: "Inter";
+    font-size: 32px;
+    font-weight: 400;
+    color:#292929;
+    padding-top: 20px;
+}
+
+h3 {
+    font-size: "Inter";
+    font-size: 8px;
+    font-weight: 600;
+    color:#000000;
+}
+
+p {
+    font-size: "Inter";
+    font-size: 16px;
+    font-weight: 300;
     color:#000000;
 }
 
 .search {
     align-items: center;
-    background-color: orange;
+    background-color: #ffffff;
     width:322px;
     height: 50px;
     border-radius: 6px;
+    border: 0px;
     margin-bottom: 20px;
+}
+
+.link-button {
+    font-family: "Inter";
+    color: #ffffff;
+    font-size: 16px;
+    width: 322px;
+    height: 63px;
+    padding: 22px 38px 22px 38px;
+    border-radius: 10px;
+    border: 0px;
+    margin-top: 20px;
+    background-color: #01AC66;
+    text-decoration: none;
+}
+
+.div-link-button {
+    margin-top: 70px;
+    margin-bottom: 70px;
 }
 
 /**
@@ -41,7 +80,7 @@ header {
     display: flex;
     flex-direction: row;
     height: 80px;
-    background-color: #F5F3EF;
+    background-color: #F5f5f5;
 }
 
 .logo {
@@ -52,7 +91,7 @@ header {
     width: 155px;
     height: 51px;
     margin-top: 15px;
-    margin-left: 100px;
+    margin-left: 150px;
 }
 
 .TT-logo-greenbackground{
@@ -116,13 +155,93 @@ svg {
     margin-left: 5px;
 }
 
+/**
+* book
+*/
+.book {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.book-go-back {
+    margin-left: 150px;
+    color: #A6A6A6;
+    margin-bottom: 20px;
+}
+
+.book-go-back a {
+    color: #A6A6A6;
+    text-decoration: none;  
+}
+
+.book-presentation {
+    display: flex;
+    flex-direction: row;
+    background-color: #faf9f7;
+}
+
+.book-picture {
+    width:720px;
+    height: 863px;
+}
+
+.book-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.book-text {
+    width:720px;
+    padding-left: 70px;
+}
+
+.book-title-author p {
+    font-size: "Inter";
+    font-size: 16px;
+    font-weight: 400;
+    color : #a6a6a6;
+}
+
+.book-description {
+    width: 485px;
+}
+
+.book-description p {
+    font-size: "Inter";
+    font-size: 14px;
+    font-weight: 400;
+    color:#000000;
+}
+
+.book-owner {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    padding : 6px 17px 6px 6px;
+    background-color: white;
+    border-radius: 114px;
+}
+
+.book-owner p {
+    font-size: "Inter";
+    font-size: 14px;
+    font-weight: 400;
+    color:#000000;
+}
+
+.book-owner img {
+    margin: 5px;
+
+}
 
 /**
 * main
 */
 
 main {
-    background-color: #f5f0e0;
+    background-color: #faf9f7;
     display: flex;
     justify-content: center;
 }
@@ -147,7 +266,11 @@ main {
     width:100%;
     justify-content: space-between;
     align-items: center;
-    background-color: greenyellow;
+}
+
+.book-search {
+    background-color:white;
+    height:50px;
 }
 
 .book-cards {
@@ -213,7 +336,107 @@ main {
 }
 
 /**
-* connection / registration
+* home
+*/
+.home {
+    display: flex;
+    flex-direction: column;
+}
+
+.welcome {
+    display: flex;
+    flex-direction: row;
+    padding-left: 150px;
+    justify-content: center;
+    background-color: #f4f3ef;
+}
+
+.welcome-txt {
+    width: 329px;
+    padding-top: 110px;
+}
+
+.welcome img {
+    width: 404px;
+    padding-left: 100px;
+}
+
+.home-gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #faf9f7;
+}
+
+.instructions{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f4f3ef;
+}
+
+.instructions-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding-bottom: 50px;
+}
+
+.instructions-subtitle {
+    display: flex;
+    justify-content: center;
+    width:397px;
+}
+
+.steps {
+    display: flex;
+    flex-direction: row;
+    width:950px;
+    justify-content: space-between;
+}
+
+.step-card {
+    display: flex;
+    justify-content: center;
+    width: 215px;
+    height: 139px;
+    background-color: white;
+}
+
+.values {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f4f3ef;
+}
+
+.values-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 392px;
+}
+
+.div-signature {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 462px;
+    padding-left: 70px;
+}
+
+.signature p {
+    color: #A6A6A6;
+}
+
+.signature-logo {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/**
+* registration / connection
 */
 .registration {
     display: flex;
@@ -226,7 +449,6 @@ main {
     flex-direction: column;
     width: 50%;
     margin-left: 150px;
-
 }
 
 .registration-form {
@@ -234,13 +456,10 @@ main {
     flex-direction: column;
 }
 
-.registration-button {
-    width: 322px;
-    height: 63px;
-    padding: 22px 38px 22px 38px;
-    border-radius: 10px;
-    margin-top: 20px;
-    background-color: #00AC66;
+.registration-form label {
+    font-size: "Inter";
+    font-size: 14px;
+    color:#a6a6a6;
 }
 
 .registration-picture {
@@ -279,6 +498,10 @@ main {
     flex-direction: column;
 }
 
+.user-books{
+    display: flex;
+    flex-direction: row;
+}
 
 
 /**
@@ -292,7 +515,7 @@ footer {
     align-items: center;
     height: 61px;
     padding-right: 46px;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
 }
 
 footer a {

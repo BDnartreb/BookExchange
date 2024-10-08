@@ -14,9 +14,9 @@
         
         <label for="email"><p>Mot de passe</p></label>
         <input class="search" type="text" name="password" id="" size="30" maxlength="120">
-
+        
         <input type="hidden" name="action" value="userprofil">
-        <input class="registration-button" type="submit" value="S'inscrire">
+        <input class="link-button" type="submit" value="S'inscrire">
         <p> Pas de compte ? <a href="index.php?action=registration">Inscrivez-vous</a></p>
         </form>
     </div>

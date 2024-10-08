@@ -7,15 +7,20 @@ class BookManager extends AbstractEntityManager
 {
     /**
      * Gets books.
+     * @param int $limit
      * @return : array
      */
-    public function getBooks() : array
+    public function getBooks(int $limit) : array
     {
-        $sql = "SELECT * FROM book LEFT JOIN user ON book.id_user = user.id WHERE book.status='1'";
-        //$sql = "SELECT * FROM book WHERE id =1";
+        $sql = "SELECT book.id, title, author, image, description, status, user.id AS idUser, pseudo
+        FROM book LEFT JOIN user ON book.id_user = user.id WHERE book.status='1' ORDER BY book.id ASC LIMIT $limit";
+
+
         
         $result = $this->db->query($sql);
         $books = [];
+        //var_dump('toto');
+        //var_dump($result->fetchAll());
 
         while ($bookArray = $result->fetch()) {
             $book = new Book($bookArray);
@@ -26,21 +31,23 @@ class BookManager extends AbstractEntityManager
 
     /**
      * Gets all the books sold by a user.
-     * @param int $idUser
-     * @return : array
+     * @param int $id
+     * @return : array $userBooks
      */
-    public function getBooksByUser(int $idUser) : array
+    public function getBooksByUser(int $id) : array
     {
-       $sql = "SELECT * FROM book WHERE id_user=:idUser";
-       /* 
+        /*$sql = "SELECT * FROM book WHERE id_user=:id";
+        $result = $this->db->query($sql, ['id_user' => $id]);*/
+        $sql = "SELECT * FROM book WHERE id_user=1";
         $result = $this->db->query($sql);
+
         $books = [];
 
         while ($bookArray = $result->fetch()) {
-            $book = new Book($bookArray);
-            $books[] = $book;
+            $books = new Book($bookArray);
+            $userBooks[] = $books;
         }
-        return $books;*/
+        return $userBooks;
     }
 
 /*SUPPR IF NOT USED!!!!!!!*/

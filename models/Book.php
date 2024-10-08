@@ -13,7 +13,7 @@
     private bool $status;
     private int $idUser;
     private ?string $pseudo;
-    private ?string $avatarUrl;   
+    private ?string $avatarUrl=null;   
 
     
     /**

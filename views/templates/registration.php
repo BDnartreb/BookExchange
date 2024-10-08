@@ -13,7 +13,7 @@
                 <label for="pseudo"><p>Pseudo</p></label>   
                 <input class="search" type="text" name="pseudo" id="pseudo" required size="30" maxlength="120">
 
-               <label for="pseudo"><p>Adresse Email</p></label>  
+                <label for="pseudo"><p>Adresse Email</p></label>  
                 <input class="search" type="text" name="email" id="email" required size="30" maxlength="120">
                
                 <label for="pseudo"><p>Mot de passe</p></label> 
@@ -21,7 +21,8 @@
             </div>
             <div class="submit-button">
                 <input type="hidden" name="action" value="adduser">
-                <input class="registration-button" type="submit" value="S'inscrire">
+                <input class="link-button" type="submit" value="S'inscrire">
+                <p>Déjà inscrit ? <a href="index.php?action=connection">Connectez-vous</a></p>
             </div>
         </form>
     </div>

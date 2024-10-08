@@ -47,14 +47,16 @@ class UserController {
 
     public function editUserInfo() : void 
     {
+        //$id = Utils::request("id");
         $id=1;
         $userManager = new UserManager();
         $user = $userManager->getUserInfo($id);
 
-        var_dump($user);
-
+        $books = new BookManager();
+        $userBooks = $books->getBooksByUser($id);
+        var_dump($userBooks);
         $view = new View("User");
-        $view->render("userinfo", ['user' => $user]);
+        $view->render("userinfo", ['user' => $user, 'userBooks' => $userBooks]);
     }
 
     /**
@@ -122,7 +124,7 @@ class UserController {
          $user = $userManager->getUserInfo($idUser);
  
          $view = new View("Profile");
-         $view->render("userprofil", ['user' => $user]);
+         $view->render("userprofil", ['user' => $user, 'book' => $userbooks]);
      }
 
     /**

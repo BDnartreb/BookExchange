@@ -41,18 +41,18 @@
         <div class="user-book-available">DISPONIBILITE</div>
         <div class="user-book-action">ACTION</div>
 
-        <?php foreach($books as $key=>$book) { 
+        <?php foreach($userBooks as $key=>$userBook) { 
             if ($key%2==0) {
                 echo "<div class=\"user-books evenline\">";
             } else {
                 echo "<div class=\"user-books\">";
             } ?>           
-                <div <?= $book->getAvatarUrl() ?> ></div>
-                <div <?= $book->getTitle() ?> ></div>
-                <div <?= $book->getAuthor() ?> ></div>
-                <div <?= $book->getDescription() ?> ></div>
+                <div> <?= $userBook->getAvatarUrl() ?> </div>
+                <div> <?= $userBook->getTitle() ?> </div>
+                <div> <?= $userBook->getAuthor() ?> </div>
+                <div> <?= $userBook->getDescription() ?> </div>
                 <?php
-                    if ($book->getStatus() == 1) {
+                    if ($userBook->getStatus() == 1) {
                         echo "<div class=\"status status-on\">disponible</div>";
                     } else {
                         echo "<div class=\"status status-off\">non dispo.</div>";

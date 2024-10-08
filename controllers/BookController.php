@@ -11,8 +11,9 @@ class BookController {
 
     public function showHome() : void
     {
+        $limit=4;
         $bookManager = new BookManager();
-        $books = $bookManager->getBooks();
+        $books = $bookManager->getBooks($limit);
 
         $view = new View("Accueil");
         $view->render("home", ['books' => $books]);
@@ -25,8 +26,9 @@ class BookController {
 
     public function showGallery() : void 
     {
+        $limit=16;
         $bookManager = new BookManager();
-        $books = $bookManager->getBooks();
+        $books = $bookManager->getBooks($limit);
 
         $view = new View("Gallery");
         $view->render("gallery", ['books' => $books]);

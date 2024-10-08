@@ -38,6 +38,7 @@ INSERT INTO user FROM book LEFT JOIN user ON book.id_user = user.id WHERE book.s
 
         $result = $this->db->query($sql, ['id' => $id]);
         $userInfo = $result->fetch();
+
         if ($userInfo){
             return new User($userInfo);
         } else {
