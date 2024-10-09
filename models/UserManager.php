@@ -5,26 +5,21 @@
  */
 class UserManager extends AbstractEntityManager 
 {
-    /**
-     * Registrate
-     * @return : array
-     */
-    public function registrate() : array
+     /**
+      * Get a user by his email (as login) to validate the connection
+      * @param string $email
+      * @param string $password
+      * @return ?User
+      */
+    public function getUserByEmail(string $email, string $password) : ?User 
     {
-        /*$sql = "INSERT INTO `user` (`pseudo`, `email`,`password`, `registration_date`, `avatar_url`) VALUES
-('BB', 'BB@home.fr', '', '2024-09-17 11:31:37', ''),
-
-INSERT INTO user FROM book LEFT JOIN user ON book.id_user = user.id WHERE book.status='1'";
-        //$sql = "SELECT * FROM book WHERE id =1";
-        
-        $result = $this->db->query($sql);
-        $users = [];
-
-        while ($bookArray = $result->fetch()) {
-            $book = new Book($bookArray);
-            $books[] = $book;
+        $sql = "SELECT * FROM user WHERE email = :email";
+        $result = $this->db->query($sql, ['email' => $email]);
+        $user = $result->fetch();
+        if ($user && password_verify($password, $user['password'])){
+            return new User($user);
         }
-        return $books;*/
+        return null;
     }
 
     /**
@@ -34,7 +29,7 @@ INSERT INTO user FROM book LEFT JOIN user ON book.id_user = user.id WHERE book.s
      */
     public function getUserInfo(int $id) : ?User
     {
-        $sql="SELECT user.*, COUNT(DISTINCT book.id_user) as bookCount FROM user LEFT JOIN book ON user.id = book.id_user WHERE user.id = :id";
+        $sql="SELECT user.*, COUNT(book.id_user) as bookCount FROM user LEFT JOIN book ON user.id = book.id_user WHERE user.id = :id";
 
         $result = $this->db->query($sql, ['id' => $id]);
         $userInfo = $result->fetch();

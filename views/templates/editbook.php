@@ -1,6 +1,6 @@
 <?php
     /**
-     * Display registration form
+     * To modify book information
      * 
      */
 ?>

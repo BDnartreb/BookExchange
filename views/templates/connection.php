@@ -1,6 +1,6 @@
 <?php
     /**
-     * Display registration form
+     * Display connection form
      * 
      */
 ?>
@@ -15,8 +15,8 @@
         <label for="email"><p>Mot de passe</p></label>
         <input class="search" type="text" name="password" id="" size="30" maxlength="120">
         
-        <input type="hidden" name="action" value="userprofil">
-        <input class="link-button" type="submit" value="S'inscrire">
+        <input type="hidden" name="action" value="connectuser">
+        <input class="link-button" type="submit" value="Se connecter">
         <p> Pas de compte ? <a href="index.php?action=registration">Inscrivez-vous</a></p>
         </form>
     </div>

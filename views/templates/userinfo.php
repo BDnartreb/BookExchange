@@ -38,31 +38,31 @@
         <div class="user-book-title">TITRE</div>
         <div class="user-book-author">AUTEUR</div>
         <div class="user-book-description">DESCRITPION</div>
-        <div class="user-book-available">DISPONIBILITE</div>
+        <div class="user-book-status">DISPONIBILITE</div>
         <div class="user-book-action">ACTION</div>
-
-        <?php foreach($userBooks as $key=>$userBook) { 
+    </div>
+    <div> 
+        <?php foreach($books as $key=>$book) { 
             if ($key%2==0) {
                 echo "<div class=\"user-books evenline\">";
             } else {
                 echo "<div class=\"user-books\">";
             } ?>           
-                <div> <?= $userBook->getAvatarUrl() ?> </div>
-                <div> <?= $userBook->getTitle() ?> </div>
-                <div> <?= $userBook->getAuthor() ?> </div>
-                <div> <?= $userBook->getDescription() ?> </div>
+                <div class="user-book-image"> <img src="./images/<?= $book->getImage() ?>"> </div>
+                <div class="user-book-title"> <?= $book->getTitle() ?> </div>
+                <div class="user-book-author"> <?= $book->getAuthor() ?> </div>
+                <div class="user-book-description"> <?= $book->getDescription() ?> </div>
                 <?php
-                    if ($userBook->getStatus() == 1) {
-                        echo "<div class=\"status status-on\">disponible</div>";
+                    if ($book->getStatus() == 1) {
+                        echo "<div  class=\"user-book-status status-on\">disponible</div>";
                     } else {
-                        echo "<div class=\"status status-off\">non dispo.</div>";
+                        echo "<div class=\"user-book-status status-off\">non dispo.</div>";
                     }
                 ?>
-                <div>
-                    <a href="index.php?action=editbook">Editer</a>
+                <div class="user-book-action">
+                    <a href="index.php?action=home">Editer</a>
                     <a href="index.php?action=home">Supprimer</a>
                 </div>
-            </div>
         <?php } ?>
 
     </div>

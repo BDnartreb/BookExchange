@@ -14,13 +14,9 @@ class BookManager extends AbstractEntityManager
     {
         $sql = "SELECT book.id, title, author, image, description, status, user.id AS idUser, pseudo
         FROM book LEFT JOIN user ON book.id_user = user.id WHERE book.status='1' ORDER BY book.id ASC LIMIT $limit";
-
-
         
         $result = $this->db->query($sql);
         $books = [];
-        //var_dump('toto');
-        //var_dump($result->fetchAll());
 
         while ($bookArray = $result->fetch()) {
             $book = new Book($bookArray);
@@ -36,9 +32,10 @@ class BookManager extends AbstractEntityManager
      */
     public function getBooksByUser(int $id) : array
     {
-        /*$sql = "SELECT * FROM book WHERE id_user=:id";
+       //var_dump($id);
+        /*$sql = "SELECT * FROM book WHERE id_user = :id";
         $result = $this->db->query($sql, ['id_user' => $id]);*/
-        $sql = "SELECT * FROM book WHERE id_user=1";
+        $sql = "SELECT * FROM book WHERE id_user = 25";
         $result = $this->db->query($sql);
 
         $books = [];
@@ -47,6 +44,7 @@ class BookManager extends AbstractEntityManager
             $books = new Book($bookArray);
             $userBooks[] = $books;
         }
+
         return $userBooks;
     }
 

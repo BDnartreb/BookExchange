@@ -7,7 +7,7 @@
 
 <section class="book">
     <div class="book-go-back">
-        <a href="">Nos livres</a> ><?= $book->getTitle() ?>
+        <a href="index.php?action=gallery">Nos livres</a> ><?= $book->getTitle() ?>
     </div>
     <div class="book-presentation">
         <div class="book-picture">

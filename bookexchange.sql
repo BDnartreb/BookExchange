@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `pseudo` varchar(50) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `password` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `registration_date` datetime NOT NULL,
   `avatar_url` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
@@ -86,15 +86,15 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `pseudo`, `email`,`password`, `registration_date`, `avatar_url`) VALUES
-(1, 'CamilleClubLit', 'Camille@home.fr', '', '2023-09-17', ''),
-(2, 'Alexlecture', 'Alexlect@home.fr', '', '18/09/2023', ''),
-(3, 'Hugo1990_12', 'Hugo@home.fr', '', '2023-09-18', ''),
-(4, 'Juju1432', 'juju@home.fr', '', '2023-12-19', ''),
-(5, 'Christiane75014', 'cricri@paris.fr', '', '2024-01-20', ''),
-(6, 'Hamzalecture', 'Ham@home.fr', '', '2024-02-21', ''),
-(7, 'Lou&Ben50', 'louben@home.fr', '', '2024-03-22', ''),
-(8, 'Lolobzh', 'lolo@brest.fr', '', '2024-04-23', ''),
-(9, 'Sas634', 'sanssas@home.fr', '', '2024-05-24', ''),
+(1, 'CamilleClubLit', 'Camille@home.fr', 'password', '2023-09-17', 'Joe.png'),
+(2, 'Alexlecture', 'Alexlect@home.fr', 'password', '18/09/2023', ''),
+(3, 'Hugo1990_12', 'Hugo@home.fr', 'password', '2023-09-18', ''),
+(4, 'Juju1432', 'juju@home.fr', 'password', '2023-12-19', ''),
+(5, 'Christiane75014', 'cricri@paris.fr', 'password', '2024-01-20', ''),
+(6, 'Hamzalecture', 'Ham@home.fr', 'password', '2024-02-21', ''),
+(7, 'Lou&Ben50', 'louben@home.fr', 'password', '2024-03-22', ''),
+(8, 'Lolobzh', 'lolo@brest.fr', 'password', '2024-04-23', ''),
+(9, 'Sas634', 'sanssas@home.fr', 'password', '2024-05-24', ''),
 (10, 'ML95', 'ML@home.fr', '', '2024-06-06', ''),
 (11, 'Verogo33', 'vero@home.fr', '', '2024-06-25', ''),
 (12, 'AnnikaBrahms', 'annibrahms@home.fr', '', '2024-07-25', ''),

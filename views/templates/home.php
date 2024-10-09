@@ -4,7 +4,8 @@
      */
 
 ?>
- <div class="home">
+
+<div class="home">
     <section class="welcome">
         <div class="welcome-txt">
             <h1>Rejoignez nos lecteurs passionnés</h1>

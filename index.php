@@ -11,19 +11,9 @@ $action = Utils::request('action', 'home');
 try {
         switch ($action) {
 
-            case 'mainempty':
-                $view = new View("mainempty");
-                $view->render("mainempty", []);
-                break;
-        
-        case 'home':
-            $bookController = new BookController();
-            $bookController->showHome();
-            break;
-
-        case 'gallery':
-            $bookController = new BookController();
-            $bookController->showGallery();
+        case 'adduser':
+            $userController = new UserController();
+            $userController->addUser();
             break;
 
         case 'book':
@@ -31,9 +21,34 @@ try {
             $bookController->showBook();
             break;
 
+        case 'connection':
+            $userController = new UserController();
+            $userController->showConnection();
+            break;
+
+        case 'connectuser':
+            $userController = new UserController();
+            $userController->connectUser();
+            break;
+
         case 'editbook':
             $bookController = new BookController();
             $bookController->editBook();
+            break;
+    
+        case 'gallery':
+            $bookController = new BookController();
+            $bookController->showGallery();
+            break;
+
+        case 'home':
+            $bookController = new BookController();
+            $bookController->showHome();
+            break;
+
+        case 'messaging':
+            $userController = new UserController();
+            $userController->showMessaging();
             break;
 
         case 'registration':
@@ -41,16 +56,6 @@ try {
             $userController->showRegistration();
             break;
 
-        case 'adduser':
-            $userController = new UserController();
-            $userController->addUser();
-            break;
-
-        case 'connection':
-            $userController = new UserController();
-            $userController->showConnection();
-            break;
-            
         case 'userinfo':
             $userController = new UserController();
             $userController->editUserInfo();
@@ -61,10 +66,6 @@ try {
             $userController->showUserProfil();
             break;
 
-        case 'messaging':
-            $userController = new UserController();
-            $userController->showMessaging();
-            break;
 
         default:
             throw new Exception("La page demandée n'existe pas.");

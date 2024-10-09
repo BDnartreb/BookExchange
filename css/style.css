@@ -1,8 +1,8 @@
 /**
 *   Header
 *   footer
-*book
-*connection
+*book ???? cf mentor
+*   connection
 *editbook
 *errorpage
 *   gallery SUBMIT BUTTON on the magnifying-glass
@@ -233,7 +233,9 @@ svg {
 
 .book-owner img {
     margin: 5px;
-
+    width : 48px;
+    height: 48px;
+    border-radius: 200px;
 }
 
 /**
@@ -271,6 +273,10 @@ main {
 .book-search {
     background-color:white;
     height:50px;
+}
+
+.book-search svg {
+    margin-left: 10px;
 }
 
 .book-cards {
@@ -456,6 +462,10 @@ main {
     flex-direction: column;
 }
 
+.registration-form a {
+    text-decoration: none;
+}
+
 .registration-form label {
     font-size: "Inter";
     font-size: 14px;
@@ -472,37 +482,110 @@ main {
 }
 
 /**
-* userinfo / userprofil
+* userprofil
 */
-.userinfo h1{
-    color: red;
-}
 
-.userinfo {
-    display: flex;
-    flex-direction: column;
-}
-
-.user_personnal_info{
+.userprofil {
     display: flex;
     flex-direction: row;
 }
 
-.user-visitcard{
+.visitcard {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    width: 341px;
+    height: 579px;
+    margin-top: 100px;
+    margin-left: 150px;
+    margin-right: 50px;
+    margin-bottom: 120px;
+    border-radius: 20px;
+    background-color: #FFFFFF;
 }
 
-.modif-info{
+.visitcard img {
+    width : 135px;
+    height: 135px;
+    border-radius: 200px;
+    margin-top: 50px;
+}
+
+.visitcard a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width : 215px;
+    height: 63px;
+    font-family: "Inter";
+    font-size: 16px;
+    color: #00AC66;
+    border: 1px solid #00AC66;
+    border-radius: 10px;
+    text-decoration: none;
+    background-color: #F5F3EF;
+}
+
+.book-list{
     display: flex;
     flex-direction: column;
+    width : 771px;
+    height: 579px;
+    margin-top: 100px;
+    border-radius: 20px;
+    padding: 0px 70px 0px 70px;
+    background-color: #FFFFFF;
 }
 
-.user-books{
+.book-list-title {
     display: flex;
     flex-direction: row;
+    align-items:end;
+    height: 59px;
 }
 
+.list-title {
+    width : 25%;
+}
+
+.lines {
+    display: flex;
+    flex-direction: column;
+}
+
+.line {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-top: 1px solid #F5F3EF;
+    height: 130px;
+
+}
+
+.line img {
+    width : 78px;
+    height : 78px;
+}
+
+.book-image {
+    width : 25%;
+}
+
+.book-title {
+    width : 25%;
+}
+
+.book-author{
+    width : 25%;
+}
+
+.book-description{
+    width : 25%;
+}
+
+.oddline {
+    background-color: #F5F3EF;
+}
 
 /**
 * footer

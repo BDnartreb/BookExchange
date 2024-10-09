@@ -15,17 +15,47 @@ class UserController {
         }
     }
 
+    /**
+     * User connection
+     * @return void
+     */
+    public function connectUser() : void 
+    {
+        $email = Utils::request("email");
+        $password = Utils::request("password");
 
-        /**
+        if (empty($email) || empty($password)) {
+            throw new Exception("Tous les champs sont obligatoires.");
+        }
+
+        $userManager = new UserManager();
+        $user = $userManager->getUserByEmail($email, $password);
+
+        if (!$user) {
+            throw new Exception("L'utilisateur demandé n'existe pas.");
+        }
+
+        if (!password_verify($password, $user->getPassword())) {
+            $hash = password_hash($password, PASSWORD_DEFAULT);
+            throw new Exception("Le mot de passe est incorrect : $hash");
+        }
+
+        // create a user session
+        $_SESSION['user'] = $user;
+        $_SESSION['id'] = $user->getId();
+
+        Utils::redirect("home");
+    }
+
+    /**
      * Displays registration page
      * @return void
      */
 
      public function showRegistration() : void 
      {
- 
-         $view = new View("Inscription");
-         $view->render("registration");
+        $view = new View("Inscription");
+        $view->render("registration");
      }
 
     /**
@@ -47,14 +77,12 @@ class UserController {
 
     public function editUserInfo() : void 
     {
-        //$id = Utils::request("id");
-        $id=1;
+        $id = Utils::request("id");
         $userManager = new UserManager();
         $user = $userManager->getUserInfo($id);
 
         $books = new BookManager();
         $userBooks = $books->getBooksByUser($id);
-        var_dump($userBooks);
         $view = new View("User");
         $view->render("userinfo", ['user' => $user, 'userBooks' => $userBooks]);
     }
@@ -71,14 +99,17 @@ class UserController {
         $email = Utils::request("email");
         $password = Utils::request("password");
 
-        if (empty($pseudo) || empty($email) || empty($password)){
+        //encripts the password to store it into the database
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+
+        if (empty($pseudo) || empty($email) || empty($hash)){
             throw new Exception ("Tous les champs sont obligatoires. Votre demande d'inscription n'a malheureusement pas pu être prise en compte."); 
         }
 
         $user = new User([
             'pseudo' => $pseudo,
             'email'=> $email,
-            'password' => $password,
+            'password' => $hash,
         ]);
 
         $userManager = new UserManager();
@@ -115,16 +146,23 @@ class UserController {
 
      public function showUserProfil() : void
      {
-        /*$idUser = Utils::request("id");
-        if (empty($idUser)) {
+        $id = $_SESSION['id'];
+        if (empty($id)) {
             throw new Exception("Préciser l'id de l'utilisateur à afficher");
-        }*/
-        $idUser = 1;
-         $userManager = new UserManager();
-         $user = $userManager->getUserInfo($idUser);
- 
-         $view = new View("Profile");
-         $view->render("userprofil", ['user' => $user, 'book' => $userbooks]);
+        }
+        $userManager = new UserManager();
+        $user = $userManager->getUserInfo($id);
+
+       /* $registrationDate = $user->getRegistrationDate();
+        var_dump($registrationDate);
+        $diff=date_diff($registrationDate, DATE_FORMAT('2024-10-09 00:00:00'));
+        var_dump($diff);*/
+        //var_dump($id);
+        $books = new BookManager();
+        $userBooks = $books->getBooksByUser($id);
+
+        $view = new View("Profile");
+        $view->render("userprofil", ['user' => $user, 'books' => $userBooks]);
      }
 
     /**
