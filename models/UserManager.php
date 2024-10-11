@@ -72,9 +72,9 @@ class UserManager extends AbstractEntityManager
 
     public function getMessaging(int $id) : ?Messaging
     {
-//        $sql="SELECT * FROM messaging LEFT JOIN user WHERE user.id = :id AND messaging.id_user = user.id";
+        $sql="SELECT * FROM messaging LEFT JOIN user WHERE user.id = :id AND messaging.id_user = user.id";
         
-        $result = $this->db->query($sql);
+        $result = $this->db->query($sql, ['id' => $id]);
         $messaging = [];
 
         while ($message = $result->fetch()) {

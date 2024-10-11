@@ -1,19 +1,6 @@
 <?php
 
-
-
 class UserController {
-
-    /**
-     * Check if the user is connected
-     * @return void
-     */
-    private function checkIfUserIsConnected() : void
-    {
-        if (!isset($_SESSION['user'])) {
-            Utils::redirect("connection");
-        }
-    }
 
     /**
      * User connection
@@ -32,12 +19,7 @@ class UserController {
         $user = $userManager->getUserByEmail($email, $password);
 
         if (!$user) {
-            throw new Exception("L'utilisateur demandé n'existe pas.");
-        }
-
-        if (!password_verify($password, $user->getPassword())) {
-            $hash = password_hash($password, PASSWORD_DEFAULT);
-            throw new Exception("Le mot de passe est incorrect : $hash");
+            throw new Exception("Le nom d'utilisteur et le mot de passe ne correspondent pas.");
         }
 
         // create a user session
@@ -77,7 +59,7 @@ class UserController {
 
     public function editUserInfo() : void 
     {
-        $id = Utils::request("id");
+        $id = $_SESSION['id'];// VERIFIER SI BONNE SYNTAXE
         $userManager = new UserManager();
         $user = $userManager->getUserInfo($id);
 
@@ -130,7 +112,7 @@ class UserController {
 
      public function updateUserInfo() : void 
      {
-        // get id
+         $id = $_SESSION['id'];// VERIFIER SI BONNE SYNTAXE
          $userManager = new UserManager();
          $user = $userManager->updateUserInfo($id);
  
@@ -146,7 +128,8 @@ class UserController {
 
      public function showUserProfil() : void
      {
-        $id = $_SESSION['id'];
+        //$id = $_SESSION['user']->getId();// A CHECKER
+        $id = $_SESSION['id'];// VERIFIER SI BONNE SYNTAXE
         if (empty($id)) {
             throw new Exception("Préciser l'id de l'utilisateur à afficher");
         }
@@ -155,8 +138,16 @@ class UserController {
 
        /* $registrationDate = $user->getRegistrationDate();
         var_dump($registrationDate);
-        $diff=date_diff($registrationDate, DATE_FORMAT('2024-10-09 00:00:00'));
-        var_dump($diff);*/
+        $diff=date_diff($registrationDate, newdatetime());
+        DateTime() 
+
+        cf methode de l'objet DateTime->diff
+
+        if pour afficher le temps si sup à 1 mois, si sup à 1 an....
+
+        Faire une méthode à part car également utilisation par "public function editUserInfo()"
+        
+        */
         //var_dump($id);
         $books = new BookManager();
         $userBooks = $books->getBooksByUser($id);
@@ -172,8 +163,13 @@ class UserController {
 
      public function showMessaging() : void
      {
+        $id = $_SESSION['id'];// VERIFIER SI BONNE SYNTAXE
+        if (empty($id)) {
+            throw new Exception("Préciser l'id de l'utilisateur à afficher");
+        }
+
          $userManager = new UserManager();
-         $user = $userManager->getMessaging();
+         $user = $userManager->getMessaging($id);
  
          $view = new View("Messagerie");
          $view->render("messaging", ['messaging' => $messaging]);

@@ -77,6 +77,17 @@ class BookController {
      */
     /*public function deleteBook() : void
     {
+        $idBook = Utils::request("id");
+        if (empty($idBook)) {
+            throw new Exception("Le livre à supprimer n'est pas précisé");
+        }
+        //Delete the book
+        $bookManager = new BookManager()->deleteBook($idBook);
+        
+        //Get user info pour display userinfo page
+        $userInfo = new UserController()->edituserinfo();
+
+        return $userInfo;
 
     }
     */

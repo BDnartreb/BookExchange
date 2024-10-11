@@ -32,39 +32,20 @@ class BookManager extends AbstractEntityManager
      */
     public function getBooksByUser(int $id) : array
     {
-       //var_dump($id);
-        /*$sql = "SELECT * FROM book WHERE id_user = :id";
-        $result = $this->db->query($sql, ['id_user' => $id]);*/
-        $sql = "SELECT * FROM book WHERE id_user = 25";
-        $result = $this->db->query($sql);
+        //var_dump($id);
+        $sql = "SELECT * FROM book WHERE id_user = :id";
+        $result = $this->db->query($sql, ['id' => $id]);
+        /*$sql = "SELECT * FROM book WHERE id_user = 25";
+        $result = $this->db->query($sql);*/
 
         $books = [];
 
         while ($bookArray = $result->fetch()) {
             $books = new Book($bookArray);
             $userBooks[] = $books;
-        }
+        } // A MUTUALITER AVEC GETBOOKS DANS UNE METHODE
 
         return $userBooks;
-    }
-
-/*SUPPR IF NOT USED!!!!!!!*/
-     /**
-     * Compares params with a predefined list to protect from XSS attacks
-     * @param : ordered params, array of authorised values, error message
-     * @return array : default value (first of the list) or ordered and validated value.
-     */
-
-    function white_list(&$value, $allowed, $message) {
-        if ($value === null) {
-            return $allowed[0];
-        }
-        $key = array_search($value, $allowed, true);
-        if ($key === false) { 
-            throw new InvalidArgumentException($message); 
-        } else {
-            return $value;
-        }
     }
 
     /**
@@ -109,8 +90,8 @@ class BookManager extends AbstractEntityManager
      */
     public function deleteBook(int $id) : void
     {
-        $sql = "DELETE";
-
+        $sql = "DELETE FROM book WHERE id = :id";
+        $this->db->query($sql, ['id' => $id]);
     }
 
 }

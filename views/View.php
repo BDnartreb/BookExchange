@@ -32,15 +32,9 @@ class View
         // params used by the main template "main.php" that defines the structure of all pages
         $content = $this->_renderViewFromTemplate($viewPath, $params);
         $title = $this->title;
-        if($_SESSION){
-            ob_start();
-            require(MAINSESSION_VIEW_PATH);
-            echo ob_get_clean();
-        } else {
-            ob_start();
-            require(MAIN_VIEW_PATH);
-            echo ob_get_clean();
-        }
+        ob_start();
+        require(MAIN_VIEW_PATH);
+        echo ob_get_clean();
     }
     
     /**

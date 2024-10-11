@@ -128,7 +128,7 @@
     */
     public function setIdUser(int $idUser) : void
     {
-        $this->userId = $idUser;
+        $this->idUser = $idUser;
     }
     /**
     * Getter for user Id

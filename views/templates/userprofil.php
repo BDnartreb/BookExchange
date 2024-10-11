@@ -9,8 +9,8 @@
     <section class="visitcard">
         <img src="./images/<?= $user->getAvatarUrl() ?>" alt="">
         <h2><?= $user->getPseudo() ?></h2>
-        <p>Membre depuis AJOUTER DUREE </p>
-        <p>BIBLIOTHEQUE</p>
+        <p class="">Membre depuis AJOUTER DUREE </p>
+        <p class="">BIBLIOTHEQUE</p>
         <p>
             <svg width="11" height="14" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M9.46556 0.160154L7.2112 0.00251429C6.65202 -0.0365878 6.16701 0.385024 6.12791 0.944207L5.32192 12.4705C5.28281 13.0296 5.70442 13.5147 6.26361 13.5538L8.51796 13.7114C9.07715 13.7505 9.56215 13.3289 9.60125 12.7697L10.4072 1.24345C10.4464 0.684262 10.0247 0.199256 9.46556 0.160154ZM6.84113 0.99408C6.85269 0.828798 6.99605 0.70418 7.16133 0.715737L9.41568 0.873377C9.58096 0.884935 9.70558 1.02829 9.69403 1.19357L8.88803 12.7198C8.87647 12.8851 8.73312 13.0097 8.56783 12.9982L6.31348 12.8405C6.1482 12.829 6.02358 12.6856 6.03514 12.5203L6.84113 0.99408Z" fill="#292929"/>
@@ -19,7 +19,7 @@
             <?= $user->getBookCount() ?> livres
         </p>
         <div>
-            <a href="index?action=messaging">Ecrire un message</a>
+            <a href="index.php?action=messaging">Ecrire un message</a>
         </div>
     </section>
     <section class="book-list">
