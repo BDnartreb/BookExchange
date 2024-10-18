@@ -70,10 +70,14 @@ class UserManager extends AbstractEntityManager
 
     }
 
-    public function getMessaging(int $id) : ?Messaging
+    public function getMessaging(int $id) : array
     {
-        $sql="SELECT * FROM messaging LEFT JOIN user WHERE user.id = :id AND messaging.id_user = user.id";
-        
+        $sql="SELECT messaging.*, user.pseudo, user.avatar_url 
+        FROM messaging LEFT JOIN user ON user.id = sender_id WHERE sender_id = :id
+        UNION 
+        SELECT messaging.*, user.pseudo, user.avatar_url 
+        FROM messaging LEFT JOIN user ON user.id = sender_id WHERE receiver_id = :id";
+
         $result = $this->db->query($sql, ['id' => $id]);
         $messaging = [];
 
@@ -82,7 +86,5 @@ class UserManager extends AbstractEntityManager
             $messaging[] = $messages;
         }
         return $messaging;
-
     }
-
 }

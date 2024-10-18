@@ -105,8 +105,11 @@
      */
     public function getAvatarUrl() : ?string
     {
-        return $this->avatarUrl;
-
+        if ($this->avatarUrl){
+            return $this->avatarUrl;
+        } else {
+            return $avatar="avatarbydefault.png";
+        }
     }
 
     /**

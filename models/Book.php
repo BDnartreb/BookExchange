@@ -70,7 +70,11 @@
 
      public function getImage() : string
      {
-        return $this->image;
+        if ($this->image){
+            return $this->image;
+        } else {
+            return $image="avatarbook.png";
+        }
      }
 
     /**

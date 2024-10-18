@@ -11,7 +11,7 @@
 *messaging
 *   registration
 *userinfo
-*userprofil
+*   userprofil
 */
 
 
@@ -23,7 +23,7 @@ h1 {
 }
 
 h2 {
-    font-size: "Inter";
+    font-family: "Inter", sans-serif;
     font-size: 32px;
     font-weight: 400;
     color:#292929;
@@ -31,17 +31,36 @@ h2 {
 }
 
 h3 {
-    font-size: "Inter";
+    font-family: "Inter", sans-serif;
     font-size: 8px;
     font-weight: 600;
     color:#000000;
 }
 
 p {
-    font-size: "Inter";
+    font-family: "Inter", sans-serif;
     font-size: 16px;
     font-weight: 300;
     color:#000000;
+}
+
+.grey-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width : 215px;
+    height: 63px;
+    border: 1px solid #00AC66;
+    border-radius: 10px;
+    background-color: #F5F3EF;
+}
+
+.grey-button-text {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #00AC66;
+    text-decoration: none;
 }
 
 .search {
@@ -55,7 +74,7 @@ p {
 }
 
 .link-button {
-    font-family: "Inter";
+    font-family: "Inter", sans-serif;
     color: #ffffff;
     font-size: 16px;
     width: 322px;
@@ -71,6 +90,14 @@ p {
 .div-link-button {
     margin-top: 70px;
     margin-bottom: 70px;
+}
+
+.standard-link {
+    font-family: "Inter", sans-serif;
+    font-size: 14px ;
+    font-weight: 400;
+    color: #A6A6A6;
+    margin-top: 5px;
 }
 
 /**
@@ -149,6 +176,7 @@ svg {
 
 .icone-message-count{
     background-color: black;
+    color: red;
     width: 10.5px;
     height: 15px;
     border-radius: 6.75px;
@@ -198,7 +226,7 @@ svg {
 }
 
 .book-title-author p {
-    font-size: "Inter";
+    font-family: "Inter", sans-serif;
     font-size: 16px;
     font-weight: 400;
     color : #a6a6a6;
@@ -209,7 +237,7 @@ svg {
 }
 
 .book-description p {
-    font-size: "Inter";
+    font-family: "Inter", sans-serif;
     font-size: 14px;
     font-weight: 400;
     color:#000000;
@@ -225,7 +253,7 @@ svg {
 }
 
 .book-owner p {
-    font-size: "Inter";
+    font-family: "Inter", sans-serif;
     font-size: 14px;
     font-weight: 400;
     color:#000000;
@@ -237,17 +265,6 @@ svg {
     height: 48px;
     border-radius: 200px;
 }
-
-/**
-* main
-*/
-
-main {
-    background-color: #faf9f7;
-    display: flex;
-    justify-content: center;
-}
-
 
 /**
 * Gallery
@@ -445,6 +462,41 @@ main {
 }
 
 /**
+* main
+*/
+
+main {
+    background-color: #faf9f7;
+    display: flex;
+    justify-content: center;
+}
+
+/**
+* messaging
+*/
+
+.messaging {
+    display: flex;
+    flex-direction: row;
+}
+
+.inbox {
+    display: flex;
+    flex-direction: column;
+    width: 308px;
+    height: 893px;
+    background-color: #FAF9F7;
+}
+
+.circle-avatar img {
+    width : 35px;
+    height: 35px;
+    border-radius: 200px;
+    margin-top: 50px;
+}
+
+
+/**
 * registration / connection
 */
 .registration {
@@ -470,7 +522,7 @@ main {
 }
 
 .registration-form label {
-    font-size: "Inter";
+    font-family: "Inter", sans-serif;
     font-size: 14px;
     color:#a6a6a6;
 }
@@ -483,6 +535,84 @@ main {
     width: 720px;
     height: 886px
 }
+
+/**
+* userinfo
+*/
+
+/*.user_personnal_info a {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+}*/
+
+.userinfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.userinfo h1 {
+    margin-top: 90px;
+    margin-bottom: 50px;
+}
+
+.userinfo h2 {
+    font-size: 16px;
+}
+
+.user_personnal_info {
+    display: flex;
+    flex-direction: row;
+}
+
+.userinfo .visitcard {
+    width: 547px;
+    height: 508px;
+    margin-top: 0px;
+}
+
+.modif-card {
+    display: flex;
+    justify-content: center;
+    width: 555px;
+    height: 508px;
+    border-radius: 20px;
+    margin: 0px 0px 120px 0px;
+    background-color: #FFFFFF;
+}
+
+.modif {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /*margin: 100px 50px 120px 20px;
+    padding: 0px 116px 50px 116px;*/
+    border-radius: 20px;
+    background-color: #FFFFFF;
+}
+
+.modif p {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight:400;
+    color:#A6A6A6;
+}
+
+.modif-user-field {
+    width: 322px;
+    height: 50px;
+    background-color: #EDF2F6;
+    border-radius: 6px ;
+    border-color: 1px solid #F0F0F0;
+    
+    margin-bottom:10px;
+}
+
+.modif .grey-button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 
 /**
 * userprofil
@@ -499,8 +629,7 @@ main {
     align-items: center;
     width: 341px;
     height: 479px;
-    margin: 100px 50px 120px 150px;
-    padding: 50px 0px 50px 0px;
+    margin: 100px 50px 120px 0px;
     border-radius: 20px;
     background-color: #FFFFFF;
 }
@@ -509,21 +638,42 @@ main {
     width : 135px;
     height: 135px;
     border-radius: 200px;
+    margin-top: 50px;
 }
 
-.visitcard a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width : 215px;
-    height: 63px;
-    font-family: "Inter";
-    font-size: 16px;
-    color: #00AC66;
-    border: 1px solid #00AC66;
-    border-radius: 10px;
-    text-decoration: none;
-    background-color: #F5F3EF;
+.pseudo {
+    font-family: "Playfair Display", serif;
+    fo2nt-size: 24px;
+    margin-top: 100px;
+    margin-bottom: 0px;
+}
+
+.member-until {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color:#A6A6A6;
+    margin-bottom: 25px;
+}
+
+.bibliotheque {
+    font-family: "Inter", sans-serif;
+    font-size: 8px;
+    font-weight:600;
+    margin-bottom: 0px;
+    color:#292929;
+}
+
+.user-book-number {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight:400;
+    color:#292929;
+
+}
+
+.visitcard .grey-button {
+    margin-top: 40px;
 }
 
 .book-list{

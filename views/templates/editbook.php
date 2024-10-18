@@ -6,7 +6,7 @@
 ?>
 
 <section class="editbook">
-    <a href=""><- retour</a>
+    <a href="index.php?action=userinfo"><- retour</a>
     <h1>Modifier les informations</h1>
     <div class="editbook-picture">
         <p>Photo</p> 

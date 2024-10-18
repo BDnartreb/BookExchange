@@ -4,14 +4,15 @@
  * Book is defined by fields : 
  * title, author, image, description, status, user_id, pseudo
  */
- class User extends AbstractEntity 
+ class Messaging extends AbstractEntity 
  {
     private string $message;
     private int $senderId;
     private int $receiverId;
     private bool $receiverRead;
     private DateTime $messageDate;
-    
+    private ?string $avatarUrl;
+    private string $pseudo;
     
     /**
      * Setter for message
@@ -42,7 +43,7 @@
      * Getter for sender id
      * @return int $senderId
      */
-    public function getsenderId() : int 
+    public function getSenderId() : int 
     {
         return $this->senderId;
     }
@@ -103,12 +104,47 @@
      * Getter for message date
      * @return DateTime $messageDate
      */
-    Public function getMessageDate() : DateTime
+    public function getMessageDate() : DateTime
     {
         return $this->messageDate;
     }
 
-    
+    /**
+     * Setter for avatar url
+     * @param : string $avatarUrl
+     */
+    public function setAvatarUrl($avatarUrl) : void
+    {
+        $this->avatarUrl = $avatarUrl;
+    }
+
+    /**
+     * Getter for avatar Url
+     * @return string|null $avatarUrl
+     */
+    public function getAvatarUrl() : ?string
+    {
+        return $this->avatarUrl;
+    }     
+ 
+/**
+     * Setter for pseudo
+     * @param : string $pseudo
+     */
+    public function setPseudo($pseudo) : void
+    {
+        $this->pseudo = $pseudo;
+    }
+
+    /**
+     * Getter for pseudo
+     * @return string $pseudo
+     */
+    public function getPseudo() : string
+    {
+        return $this->pseudo;
+    }  
+
 
 }
 

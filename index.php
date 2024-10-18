@@ -31,6 +31,11 @@ try {
             $userController->connectUser();
             break;
 
+        case 'deletebook':
+            $bookController = new BookController();
+            $bookController->deleteBook();
+            break;
+
         case 'editbook':
             $bookController = new BookController();
             $bookController->editBook();

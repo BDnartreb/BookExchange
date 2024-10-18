@@ -59,18 +59,17 @@ class BookController {
      */
     public function editBook() : void
     {
-        $idBook = Utils::request("id");
-        if (empty($idBook)) {
+        $id = Utils::request("id");
+        if (empty($id)) {
             throw new Exception("Le livre à afficher n'est pas précisé");
         }
         $bookManager = new BookManager();
-        $book = $bookManager->getBook($idBook);
+        $book = $bookManager->getBook($id);
 
         $view = new View("EditBook");
         $view->render("editbook", ['book' => $book]);
     }
     
-
     /**
      * Delete book information for modification
      * @return void

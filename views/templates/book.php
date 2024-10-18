@@ -24,12 +24,14 @@
                 <p><?= $book->getDescription() ?></p>
             </div>
             <h3>PROPRIETAIRE</h3>    
-            <div class="book-owner">
-                <img src="./images/<?= $book->getAvatarUrl() ?>" alt="">
-                <p><?= $book->getPseudo() ?></p>
-            </div>
+            <a href="index.php?action=userprofil&id=<?=$book->getIdUser()?>">
+                <div class="book-owner">
+                    <img src="./images/<?= $book->getAvatarUrl() ?>" alt="">
+                    <p><?= $book->getPseudo() ?></p>
+                </div>
+            </a>
             <div class=div-link-button>
-                <a class="link-button" href="index.php?action=messaging">Envoyer un message</a>
+                <a class="link-button" href="index.php?action=messaging&id=<?= $book->getIdUser() ?>">Envoyer un message</a>
             </div>
         </div>
     </div>

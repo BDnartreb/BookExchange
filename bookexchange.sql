@@ -121,7 +121,15 @@ CREATE TABLE IF NOT EXISTS `messaging` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 
+--
+-- Hydrates table `messaging`
+--
 
+INSERT INTO `messaging` (`id`, `message`, `sender_id`,`receiver_id`, `receiver_read`, `date`) VALUES
+(1, 'Message de 1 à 3', '1', '3', '0', '2024-10-14 10:51:26'),
+(2, 'Réponse de 3 à 1', '3', '1', '0', '2024-10-14 10:53:26'),
+(3, 'Message de 1 à 2', '1', '2', '0', '2024-10-15 08:15:23'),
+(4, 'Message de 2 à 3', '2', '3', '0', '2024-10-16 09:58:16');
 
 
 --

@@ -17,7 +17,11 @@
     </div>
     <div class="book-cards">
         <?php foreach($books as $book) { ?>
+            <?php if($_SESSION){?>
                 <a href="index.php?action=book&id=<?= $book->getId() ?>">
+            <?php } else { ?>
+                <a href="index.php?action=registration">
+            <?php } ?>
                     <article class="card-content">
                         <img src="./images/<?= $book->getImage() ?>">
                         <div class="card-txt">

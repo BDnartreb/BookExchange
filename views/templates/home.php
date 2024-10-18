@@ -48,10 +48,10 @@
                 </div>
         </div>
             <div class="steps">
-                    <div class="step-card"><p>Inscrivez-vous gratuitement sur notre plateforme.</p></div>
-                    <div class="step-card"><p>Ajoutez les livres que vous souhaitez échanger à votre profil.</p></div>
-                    <div class="step-card"><p>Parcourez les livres disponibles chez d'autres membres.</p></div>
-                    <div class="step-card"><p>Proposez un échange et discutez avec d'autres passionnés de lecture.</p></div>
+                <div class="step-card"><p>Inscrivez-vous gratuitement sur notre plateforme.</p></div>
+                <div class="step-card"><p>Ajoutez les livres que vous souhaitez échanger à votre profil.</p></div>
+                <div class="step-card"><p>Parcourez les livres disponibles chez d'autres membres.</p></div>
+                <div class="step-card"><p>Proposez un échange et discutez avec d'autres passionnés de lecture.</p></div>
             </div>
             <div class=div-link-button>
                 <a class="link-button" href="index.php?action=gallery">Voir tous les livres</a>

@@ -36,7 +36,8 @@ class UserController {
 
      public function showRegistration() : void 
      {
-        $view = new View("Inscription");
+        //$view = new View("Inscription");
+        $view = new View();
         $view->render("registration");
      }
 
@@ -63,10 +64,10 @@ class UserController {
         $userManager = new UserManager();
         $user = $userManager->getUserInfo($id);
 
-        $books = new BookManager();
-        $userBooks = $books->getBooksByUser($id);
+        $userBooks = new BookManager();
+        $books = $userBooks->getBooksByUser($id);
         $view = new View("User");
-        $view->render("userinfo", ['user' => $user, 'userBooks' => $userBooks]);
+        $view->render("userinfo", ['user' => $user, 'books' => $books]);
     }
 
     /**
@@ -115,7 +116,7 @@ class UserController {
          $id = $_SESSION['id'];// VERIFIER SI BONNE SYNTAXE
          $userManager = new UserManager();
          $user = $userManager->updateUserInfo($id);
- 
+
          $view = new View("UserInfo");
          $view->render("userinfo", ['user' => $user]);
      }
@@ -123,13 +124,13 @@ class UserController {
      
     /**
      * Displays user profil page
+     * @param int $id
      * @return void
      */
 
      public function showUserProfil() : void
      {
-        //$id = $_SESSION['user']->getId();// A CHECKER
-        $id = $_SESSION['id'];// VERIFIER SI BONNE SYNTAXE
+        $id = Utils::request("id");
         if (empty($id)) {
             throw new Exception("Préciser l'id de l'utilisateur à afficher");
         }
@@ -164,15 +165,18 @@ class UserController {
      public function showMessaging() : void
      {
         $id = $_SESSION['id'];// VERIFIER SI BONNE SYNTAXE
+
         if (empty($id)) {
             throw new Exception("Préciser l'id de l'utilisateur à afficher");
         }
 
-         $userManager = new UserManager();
-         $user = $userManager->getMessaging($id);
- 
-         $view = new View("Messagerie");
-         $view->render("messaging", ['messaging' => $messaging]);
+        $userManager = new UserManager();
+        $messaging = $userManager->getMessaging($id);
+        $user = $userManager->getUserInfo($id);
+
+        //$view = new View("Messagerie");
+        $view = new View();
+        $view->render("messaging", ['messaging' => $messaging, 'user' => $user]);
      }
 }
 
