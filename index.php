@@ -1,7 +1,8 @@
 <?php
 
-require_once 'config/config.php';
 require_once 'config/autoload.php';
+require_once 'config/config.php';
+
 
 // Gets orders form the user
 // If no order, display homepage
@@ -60,6 +61,35 @@ try {
             $userController = new UserController();
             $userController->showRegistration();
             break;
+
+        case 'searchbook':
+            $userController = new BookController();
+            $userController->searchBook();
+            break;
+
+        case 'updatebook':
+            $userController = new BookController();
+            $userController->updateBook();
+            break;
+
+        case 'updatebookimage':
+            $userController = new BookController();
+            $userController->updateBookImage();
+            break;
+        
+        case 'updateuseravatar':
+            $userController = new UserController();
+            $userController->updateUserAvatar();
+            break;
+                    
+        case 'updateuserinfo':
+            $userController = new UserController();
+            $userController->updateUserInfo();
+            break;
+    
+
+
+
 
         case 'userinfo':
             $userController = new UserController();

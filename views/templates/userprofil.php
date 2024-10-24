@@ -9,7 +9,7 @@
     <section class="visitcard">
         <img src="./images/<?= $user->getAvatarUrl() ?>" alt="">
         <p class="pseudo"><?= $user->getPseudo() ?></p>
-        <p class="member-until">Membre depuis AJOUTER DUREE </p>
+        <p class="member-until">Membre depuis <?= $dateInterval ?> </p>
         <p class="bibliotheque">BIBLIOTHEQUE</p>
         <p class="user-book-number">
             <svg width="11" height="14" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg">

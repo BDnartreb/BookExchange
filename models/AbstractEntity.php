@@ -1,5 +1,7 @@
 <?php
 
+//hydrates an entity in a right format from a database
+
 abstract class AbstractEntity 
 {
     // id by default -1, to check it's a new entity. 

@@ -10,7 +10,7 @@
     private int $senderId;
     private int $receiverId;
     private bool $receiverRead;
-    private DateTime $messageDate;
+    private DateTime $date;
     private ?string $avatarUrl;
     private string $pseudo;
     
@@ -87,26 +87,26 @@
 
     /**
      * Setter for message date
-     * Convert date in string format in DateTime format
-     * @param string|DateTime $messageDate
+     * Converts date from string format to DateTime format
+     * @param string|DateTime $date
      * @param DateTime $format : format of conversion (mysql format) if string
      */
-    public function setMessageDate(string|DateTime $messageDate, string $format = 'Y-m-d H:i:s') : void 
+    public function setDate(string|DateTime $date, string $format = 'Y-m-d H:i:s') : void 
     {
-        if (is_string($messageDate)) {
-            $messageDate = DateTime::createFromFormat($format, $messageDate);
+        if (is_string($date)) {
+            $date = DateTime::createFromFormat($format, $date);
         }
-        $this->messageDate = $messageDate;
+        $this->date = $date;
     }
 
 
     /**
      * Getter for message date
-     * @return DateTime $messageDate
+     * @return DateTime $date
      */
-    public function getMessageDate() : DateTime
+    public function getDate() : DateTime
     {
-        return $this->messageDate;
+        return $this->date;
     }
 
     /**

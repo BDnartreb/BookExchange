@@ -60,14 +60,41 @@ class UserManager extends AbstractEntityManager
 
     /**
      * Update User Information
-     * Gets user information and number of books from user and book tables of the bookexchange database
-     * @param : int $id 
+     * Update user email, password, pseudo
+     * @param : int $id
+     * @param : string $email
+     * @param : string $password
+     * @param : string $pseudo
      * @return void
      */
-    public function updateUserInfo(int $id) : void
+    public function updateUserInfo(int $id, string $email, string $password, string $pseudo) : void
     {
-        $sql="UPDATE";
+        $sql="UPDATE user SET email= :email, password = :password, pseudo= :pseudo WHERE id= :id";
 
+        $result=$this->db->query($sql, [
+            'id' => $id,
+            'email' => $email,
+            'password' => $password,
+            'pseudo' => $pseudo
+        ]);
+    }
+
+    /**
+     * Update User avatar
+     * @param : int $id
+     * @param : string $avatar
+     * @return void
+     */
+    public function updateUserAvatar(int $id, string $avatar) : void
+    {
+        var_dump($id);
+        var_dump($avatar);
+        $sql="UPDATE user SET avatar_url = :avatar WHERE id = :id";
+
+        $result=$this->db->query($sql, [
+            'id' => $id,
+            'avatar_url' => $avatar
+        ]);
     }
 
     public function getMessaging(int $id) : array
@@ -87,4 +114,57 @@ class UserManager extends AbstractEntityManager
         }
         return $messaging;
     }
+
+     /**
+      * Calculate the interval between a date and the current date
+      * @param DateTime $startDate
+      * @return DateTime $dateInterval
+      */
+
+    public function dateInterval($startDate) : string
+    {
+        //Date test
+            /*$d = "2024-10-22 00:00:00";// change the date to test the function
+            $format = 'Y-m-d H:i:s';
+            $startDate = DateTime::createFromFormat($format, $d);
+            var_dump($startDate);*/
+
+        $date = new DateTime();
+        $interval = $startDate->diff($date);
+        $intervalInString = $interval->format('%Y%M%D');
+
+        if ($intervalInString < 2) {
+            $dateInterval = "1 jour";
+        } else if ($intervalInString <=31) {
+            $dateInterval = $interval->format('%d')." jours";
+        } else if ($intervalInString < 10000) {
+            $dateInterval = $interval->format('%m')." mois";
+        } else if ($intervalInString > 10000) {
+            $dateInterval = $interval->format('%y')." an et " . $interval->format('%m') ." mois";
+        } else if ($intervalInString > 20000) {
+            $dateInterval = $interval->format('%y')." ans";
+        }
+
+        return $dateInterval;
+    }
+    
+        /**
+     * Create a new Message in the database
+     * @param : array $newMessage
+     * @return bool $result //check the increase of rows in the database to validate the insert
+     */
+    public function addMessage($newMessage) : bool
+    {
+        $sql="INSERT INTO message (`message`, `sender_id`, `receiver_id`, `date`) VALUES (:message, :senderId, :receiverId, NOW())";
+
+        $result=$this->db->query($sql, [
+            'message' => $newMessage->getMessage(),
+            'sender_id' => $newMessage->getSenderId(),
+            'receiver_id' => $newMessage->getReceiverId()
+        ]);
+        return $result->rowCount() >0;
+    }
+
+
+
 }

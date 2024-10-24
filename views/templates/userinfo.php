@@ -10,9 +10,27 @@
     <section class="user_personnal_info">
         <div class="visitcard">
             <img src="./images/<?= $user->getAvatarUrl() ?>" alt="">
-            <a class="standard-link" href="index.php?action=userprofil" alt="Modifier avatar du user">modifier</a>
+            <a class="standard-link" href="index.php?action=userinfo&modif=1" alt="Modifier avatar du user">modifier</a>
+            <?php if($_GET['modif'] == 1){ ?>
+                <form method="get" action="">
+                    <label for="avatar"></label> 
+                    <select name="avatar" id="avatar">
+                        <?php $scandir = scandir("C:/xampp/htdocs/tests/Projet6/BookExchange/images");
+                        foreach($scandir as $fichier){
+                        echo "<option>$fichier</option>";
+                        }?>
+                    </select>
+                    <input type="hidden" name="action" value="updateuseravatar">
+                    <input type="hidden" name="" value="">
+                    <input class="registrate-button" type="submit" value="Valider">
+                </form>
+            <?php } ?>
+            
+            
+            
+            
             <p class="pseudo"><?= $user->getPseudo() ?></p>
-            <p class="member-until">Membre depuis AJOUTER DUREE </p>
+            <p class="member-until">Membre depuis <?= $dateInterval ?> </p>
             <p class="bibliotheque">BIBLIOTHEQUE</p>
             <p class="user-book-number">
                 <svg width="11" height="14" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -28,48 +46,50 @@
                 <form class="modif-form" method="get" action="#">
                     <div>
                         <label for="email"><p>Adresse email</p></label>   
-                        <input class="modif-user-field" type="text" name="email" id="email" required size="30" maxlength="120">
+                        <input class="blue-fieldset" type="text" name="email" id="email" required size="30" maxlength="120" value="<?= $user->getEmail() ?>">
                         <label for="password"><p>Mot de passe</p></label>   
-                        <input class="modif-user-field" type="text" name="password" id="password" required size="30" maxlength="120">
+                        <input class="blue-fieldset" type="text" name="password" id="password" required size="30" maxlength="120" placeholder="***********">
                         <label for="pseudo"><p>Pseudo</p></label>   
-                        <input class="modif-user-field" type="text" name="pseudo" id="pseudo" required size="30" maxlength="120">
+                        <input class="blue-fieldset" type="text" name="pseudo" id="pseudo" required size="30" maxlength="120" value="<?= $user->getPseudo() ?>">
                     </div>
                     <div class="submit-button">
-                        <input type="hidden" name="action" value="modifuser">
+                        <input type="hidden" name="action" value="updateuserinfo">
                         <input class="grey-button grey-button-text" type="submit" value="Enregistrer">
                     </div>
                 </form>
             </div>
         </div>
     </section>
-    <section>
-        <div class="user-books">
-            <div class="user-book-image">PHOTO</div>
-            <div class="user-book-title">TITRE</div>
-            <div class="user-book-author">AUTEUR</div>
-            <div class="user-book-description">DESCRITPION</div>
-            <div class="user-book-status">DISPONIBILITE</div>
-            <div class="user-book-action">ACTION</div>
+    <section class="book-list">
+        <div class="book-list-title">
+            <div class="list-title">PHOTO</div>
+            <div class="list-title">TITRE</div>
+            <div class="list-title">AUTEUR</div>
+            <div class="list-title">DESCRITPION</div>
+            <div class="list-title">DISPONIBILITE</div>
+            <div class="list-title">ACTION</div>
         </div>
-        <div> 
+        <div class="lines"> 
             <?php foreach($books as $key=>$book) { 
                 if ($key%2==0) {
-                    echo "<div class=\"user-books evenline\">";
+                    echo "<div class=\"line evenline\">";
                 } else {
-                    echo "<div class=\"user-books\">";
+                    echo "<div class=\"line oddline\">";
                 } ?>           
-                    <div class="user-book-image"> <img src="./images/<?= $book->getImage() ?>"> </div>
-                    <div class="user-book-title"> <?= $book->getTitle() ?> </div>
-                    <div class="user-book-author"> <?= $book->getAuthor() ?> </div>
-                    <div class="user-book-description"> <?= $book->getDescription() ?> </div>
-                    <?php
-                        if ($book->getStatus() == 1) {
-                            echo "<div  class=\"user-book-status status-on\">disponible</div>";
-                        } else {
-                            echo "<div class=\"user-book-status status-off\">non dispo.</div>";
-                        }
-                    ?>
-                    <div class="user-book-action">
+                    <div class="book-image"> <img src="./images/<?= $book->getImage() ?>"> </div>
+                    <div class="book-title"> <?= $book->getTitle() ?> </div>
+                    <div class="book-author"> <?= $book->getAuthor() ?> </div>
+                    <div class="book-description"> <?= $book->getDescription() ?> </div>
+                    <div class="book-status">
+                        <?php
+                            if ($book->getStatus() == 1) {
+                                echo "<div  class=\"status status-on\">disponible</div>";
+                            } else {
+                                echo "<div class=\"status status-off\">non dispo.</div>";
+                            }
+                        ?>
+                    </div>
+                    <div class="book-action">
                         <a href="index.php?action=editbook&id=<?= $book->getId() ?>">Editer</a>
                         <a href="index.php?action=deletebook&id=<?= $book->getId() ?>">Supprimer</a>
                     </div>

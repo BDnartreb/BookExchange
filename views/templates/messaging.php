@@ -5,61 +5,79 @@
 ?>
 
 <div class="messaging">
-    <section class="inbox">
+    <section class="contacts">
         <h1>Messagerie</h1>
         <?php if ($_SESSION) {?>
-            <div class="message-list">
+            <div class="contact-list">
                 <?php foreach ($messaging as $message) {?>
-                    <div class="message-card">
-                        <div class="circle-avatar">
-                            <img src="./images/<?= $message->getAvatarUrl() ?>">
-                        </div>
-                        <div class="message-text">
-                            <div class="pseudo-time">
-                                <?= $message->getPseudo() ?>
-                                <!-- $message->getMessageDate() ?>-->
+                    <div class="contact-card">
+                        <a href="index.php?action=messaging">
+                            <div class="contact-avatar">
+                                <img src="./images/<?= $message->getAvatarUrl() ?>">
                             </div>
-                            <div class="message-content">
-                                <?= $message->getMessage() ?>
+                            <div class="contact-card-content">
+                                <div class="contact-card-pseudo-date">
+                                    <p>
+                                        <?= $message->getPseudo() ?>
+                                        <?= $message->getDate()->format("H-m") ?>
+                                    </p>
+                                </div>
+                                <div class="contact-card-text">
+                                    <p>
+                                        <?= $message->getMessage() ?>
+                                    </p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 <?php } ?>
             </div>
         <?php } ?>
     </section>
-    <section class="current-message">
-        <div >
-            <div class="circle-avatar">
+    <section class="conversation">
+        <div class="conversation-avatar-pseudo">
+            <div class="conversation-avatar">
                 <img src="./images/<?= $user->getAvatarUrl() ?>">
             </div>
-            <div class="pseudo">
-                message en cours<?= $user->getPseudo() ?>
+            <div class="conversation-pseudo">
+                <?= $user->getPseudo() ?>
             </div>
         </div>
-        <div class="current-conversation">
-            <?php foreach($messaging as $message){ ?>
-                <img src="./images/<?= $message->getAvatarUrl() ?>">
-                <?= $message->getMessageDate() ?>
-            <?php } ?>
-        </div>
-        <div>
-            <input class="new-message" type="text" name="message" id="message" size="30" maxlength="1500" placeholder="Tapez votre message ici" required>
-            <form class="registration-form" method="get" action="#">
-            
-            <input class="registrate-button" type="submit" value="<?= $article->getId() ?>">
-
-            <!--<textarea name="content" id="content" required></textarea>-->
-
-            <input type="hidden" name="action" value="sendMessage">
-            <input type="hidden" name="idArticle" value="<?= $article->getId() ?>">
-
-            <button class="submit">Ajouter un commentaire</button>
-        </div>
-
-
-
-
+        <div class="messages">
+            <div class="messages-history">
+                <?php foreach($messaging as $message){ ?>
+                    <div class="message">
+                        <?php if($_SESSION['user']->getId() == $message->getReceiverId()){ ?>
+                            <div class="message-receiver">
+                                <div class="message-avatar-date">
+                                    <img src="./images/<?= $message->getAvatarUrl() ?>">
+                                    <?= $message->getDate()->format("H-m-s") ?>
+                                </div>
+                                <div class="white-fieldset">
+                                    <?= $message->getMessage() ?>
+                                </div>
+                            </div>
+                        <?php } else if($_SESSION['user']->getId() == $message->getSenderId()){ ?>
+                            <div class="message-sender">
+                                <div class="message-date">
+                                    <?= $message->getDate()->format("H-m-s") ?>
+                                </div>
+                                <div class="blue-fieldset">
+                                    <?= $message->getMessage() ?>
+                                </div>
+                            </div>
+                        <?php } ?>
+                    </div>
+                <?php } ?>
+            </div>
+            <div class="new-message">
+                <form method="get" name="messaging"> 
+                    <label for="message"></label>
+                    <input type="hidden" name="receiverID" value="<?= $message->getReceiverId() ?>">
+                    <input class="white-fieldset" type="text" name="message" id="message" size="30" maxlength="1500" placeholder="Tapez votre message ici" required>
+                    <input class="green-button" type="submit" value="Envoyer">
+                </form>
+            </div>
         </div>
     </section>
 </div>

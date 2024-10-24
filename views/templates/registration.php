@@ -13,10 +13,10 @@
                 <label for="pseudo"><p>Pseudo</p></label>   
                 <input class="search" type="text" name="pseudo" id="pseudo" required size="30" maxlength="120">
 
-                <label for="pseudo"><p>Adresse Email</p></label>  
+                <label for="email"><p>Adresse Email</p></label>  
                 <input class="search" type="text" name="email" id="email" required size="30" maxlength="120">
                
-                <label for="pseudo"><p>Mot de passe</p></label> 
+                <label for="password"><p>Mot de passe</p></label> 
                 <input class="search" type="text" name="password" id="password" required size="30" maxlength="120">
             </div>
             <div class="submit-button">

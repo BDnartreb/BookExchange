@@ -131,9 +131,6 @@
      {
         return $this->bookCount;
      }
-
-    
-
 }
 
 

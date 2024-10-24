@@ -57,7 +57,8 @@
             </div>
             <div class="main-nav-2">
 
-                <?php if ($_SESSION){?>
+                <?php if ($_SESSION){ ?>
+                    
                 <div class="nav-link">
                     <!--icone messaging-->
                     <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -65,12 +66,7 @@
                     </svg>
                     <a href="index.php?action=messaging">Messagerie</a>
                     <div class="icone-message-count">
-                    <!--<?php
-                    /*$id = $_SESSION['id'];
-                    $userManager = new UserManager();
-                    $user = $userManager->getUserInfo($id);
-                    echo $user['bookCount'];*/
-                    ?>-->
+                        <?php //echo $bookCount; ?>
                     </div>
                 </div>
                 <div class="nav-link">

@@ -12,8 +12,8 @@
         <label for="email"><p>Adresse email</p></label>
         <input class="search" type="text" name="email" id="email" required size="30" maxlength="120">
         
-        <label for="email"><p>Mot de passe</p></label>
-        <input class="search" type="text" name="password" id="" size="30" maxlength="120">
+        <label for="password"><p>Mot de passe</p></label>
+        <input class="search" type="text" name="password" id="password" size="30" maxlength="120">
         
         <input type="hidden" name="action" value="connectuser">
         <input class="link-button" type="submit" value="Se connecter">

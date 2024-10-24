@@ -32,11 +32,8 @@ class BookManager extends AbstractEntityManager
      */
     public function getBooksByUser(int $id) : array
     {
-        //var_dump($id);
         $sql = "SELECT * FROM book WHERE id_user = :id";
         $result = $this->db->query($sql, ['id' => $id]);
-        /*$sql = "SELECT * FROM book WHERE id_user = 25";
-        $result = $this->db->query($sql);*/
 
         $books = [];
 
@@ -49,7 +46,7 @@ class BookManager extends AbstractEntityManager
     }
 
     /**
-     * Gets a book from his id
+     * Gets a book from its id
      * @param int $id : id of the book
      * @return Book|null : Book or null if the book doesn't exist
      */
@@ -64,27 +61,71 @@ class BookManager extends AbstractEntityManager
         return null;
     }
 
+    /**
+     * Gets a book from its title or its author
+     * @param int $id : id of the book
+     * @return Book|null : Book or null if the book doesn't exist
+     */
+    public function searchBook(string $search) : ?Book
+    {
+        $sql = "SELECT book.*, user.pseudo, user.avatar_url FROM book LEFT JOIN user ON book.id_user = user.id WHERE book.title = :title";
+        $result = $this->db->query($sql, ['title' => $search]);
+        $book = $result->fetch();
+        if ($book) {
+            return new Book($book);
+        }
+
+        $sql = "SELECT book.*, user.pseudo, user.avatar_url FROM book LEFT JOIN user ON book.id_user = user.id WHERE book.author = :author";
+        $result = $this->db->query($sql, ['author' => $search]);
+        $book = $result->fetch();
+        if ($book) {
+            return new Book($book);
+        }
+
+        return null;
+    }
+
+    
+
    
     /**
      * Update book information
-     * @param Book $book : the book to update
+     * @param int $id
+     * @param string $title
+     * @param string $author
+     * @param string $description
+     * @param bool $status
      * @return void
      */
-    public function updateBook(Book $book) : void
+    public function updateBook(int $id, string $title, string $author, string $description, bool $status) : void
     {
-        $sql = "UPDATE book SET title = :title, author = :author, image = :image, description = :description, status = :status, id_user = :id_user";
+        $sql = "UPDATE book SET title = :title, author = :author, description = :description, status = :status WHERE id = :id";
         $this->db->query($sql, [
-            'title' => $article->getTitle(),
-            'author' => $article->getAuthor(),
-            'image' => $image->getImage(),
-            'description' => $description->getDescription(),
-            'status' => $status->getStatus(),
-            'id_user' => $article->getUserId()
+            'title' => $title,
+            'author' => $author,
+            'description' => $description,
+            'status' => $status,
+            'id' => $id
+        ]);
+    }
+
+    /**
+     * Update book image
+     * @param int $id : id of the book
+     * @param string $image : image of the book to update
+     * @return void
+     */
+    public function updateBookImage(int $id, string $image) : void
+    {
+        $sql = "UPDATE book SET image = :image WHERE id = :id";
+        $this->db->query($sql, [
+            'id' => $id,
+            'image' => $image
         ]);
     }
 
         /**
-     * Delete book information
+     * Delete book 
      * @param int $id : id of the book to delete
      * @return void
      */
