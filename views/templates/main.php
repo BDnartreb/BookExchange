@@ -66,7 +66,7 @@
                     </svg>
                     <a href="index.php?action=messaging">Messagerie</a>
                     <div class="icone-message-count">
-                        <?php //echo $bookCount; ?>
+                        <?php echo $params['messageCount']; ?>
                     </div>
                 </div>
                 <div class="nav-link">

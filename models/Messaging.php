@@ -12,7 +12,7 @@
     private bool $receiverRead;
     private DateTime $date;
     private ?string $avatarUrl;
-    private string $pseudo;
+    private ?string $pseudo;
     
     /**
      * Setter for message
@@ -138,9 +138,9 @@
 
     /**
      * Getter for pseudo
-     * @return string $pseudo
+     * @return string|null $pseudo
      */
-    public function getPseudo() : string
+    public function getPseudo() : ?string
     {
         return $this->pseudo;
     }  

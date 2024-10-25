@@ -7,11 +7,12 @@
 
 <div class="userinfo">
     <h1>Mon compte</h1>
+    <?= var_dump($messageCount); ?>
     <section class="user_personnal_info">
         <div class="visitcard">
             <img src="./images/<?= $user->getAvatarUrl() ?>" alt="">
             <a class="standard-link" href="index.php?action=userinfo&modif=1" alt="Modifier avatar du user">modifier</a>
-            <?php if($_GET['modif'] == 1){ ?>
+            <?php if(isset($_GET['modif']) && $_GET['modif'] == 1){ ?>
                 <form method="get" action="">
                     <label for="avatar"></label> 
                     <select name="avatar" id="avatar">

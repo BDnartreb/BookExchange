@@ -17,6 +17,11 @@ try {
             $userController->addUser();
             break;
 
+        case 'addmessage':
+            $userController = new UserController();
+            $userController->addMessage();
+            break;
+
         case 'book':
             $bookController = new BookController();
             $bookController->showBook();
@@ -87,10 +92,6 @@ try {
             $userController->updateUserInfo();
             break;
     
-
-
-
-
         case 'userinfo':
             $userController = new UserController();
             $userController->editUserInfo();

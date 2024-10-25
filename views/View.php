@@ -28,15 +28,12 @@ class View
      */
     public function render(string $viewName, array $params = []) : void 
     {
-        ////////////////////////////////////////$count = new AbstractEntityManager();
-        /////////////////////////////////////////$bookCount = $count->getBookCount();
         // gets the path of the file containing the structre of the page to display (without the params)
         $viewPath = $this->buildViewPath($viewName);
         // params used by the main template "main.php" that defines the structure of all pages
         $content = $this->_renderViewFromTemplate($viewPath, $params); // inputs params into the view
         //$title = $this->title;
         ob_start();//memorizes what's following and the content of the buffer ($content in the present case)
-       
         require(MAIN_VIEW_PATH); // puts the view with the params into the main view (by calling $content in the buffer from main.php)
         echo ob_get_clean(); // gets all the data to display and cleans the memory 
     }

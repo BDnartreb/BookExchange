@@ -628,7 +628,6 @@ main {
     height: 893px;
     margin: 50px;
     background-color: #FAF9F7;
-    background-color: blue;
 }
 
 .contact-list{
@@ -698,7 +697,6 @@ main {
     height: 893px;
     padding: 50px 50px 50px 50px;
     background-color: #FAF9F7;
-    background-color: red;
 }
 
 .conversation-avatar-pseudo {
@@ -760,6 +758,11 @@ main {
 .message-date{
     display: flex;
     flex-direction: row;
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color:#A6A6A6;
+
 }
 .message-text{
 

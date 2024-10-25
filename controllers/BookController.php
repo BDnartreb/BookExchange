@@ -2,7 +2,7 @@
 
 
 
-class BookController {
+class BookController extends AbstractController {
 
     /**
      * Displays homepage
@@ -31,7 +31,7 @@ class BookController {
         $books = $bookManager->getBooks($limit);
 
         $view = new View("Gallery");
-        $view->render("gallery", ['books' => $books]);
+        $view->render("gallery", $this->getParams(['books' => $books]));
     }
 
     /**

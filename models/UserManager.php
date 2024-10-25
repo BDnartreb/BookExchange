@@ -5,6 +5,101 @@
  */
 class UserManager extends AbstractEntityManager 
 {
+
+    /**
+     * Create a new Message in the database
+     * @param : array $newMessage
+     * @return bool $result //check the increase of rows in the database to validate the insert
+     */
+    public function addMessage($newMessage) : bool
+    {
+        $sql="INSERT INTO messaging (`message`, `sender_id`, `receiver_id`, `date`) VALUES (:message, :senderId, :receiverId, NOW())";
+
+        $result=$this->db->query($sql, [
+            'message' => $newMessage->getMessage(),
+            'senderId' => $newMessage->getSenderId(),
+            'receiverId' => $newMessage->getReceiverId()
+        ]);
+        return $result->rowCount() >0;
+    }
+
+    /**
+     * Create a new User in the database
+     * @param : array $user
+     * @return bool $result //check the increase of rows in the database to validate the insert
+     */
+    public function addUser($user) : bool
+    {
+        $sql="INSERT INTO user (`pseudo`, `email`, `password`, `registration_date`) VALUES (:pseudo, :email, :password, NOW())";
+
+        $result=$this->db->query($sql, [
+            'pseudo' => $user->getPseudo(),
+            'email' => $user->getEmail(),
+            'password' => $user->getPassword()
+        ]);
+        return $result->rowCount() >0;
+    }
+
+    
+     /**
+      * Calculate the interval between a date and the current date
+      * @param DateTime $startDate
+      * @return DateTime $dateInterval
+      */
+
+    public function dateInterval($startDate) : string
+    {
+         //Date test
+            /*$d = "2024-10-22 00:00:00";// change the date to test the function
+            $format = 'Y-m-d H:i:s';
+            $startDate = DateTime::createFromFormat($format, $d);
+            var_dump($startDate);*/
+  
+        $date = new DateTime();
+        $interval = $startDate->diff($date);
+        $intervalInString = $interval->format('%Y%M%D');
+  
+        if ($intervalInString < 2) {
+            $dateInterval = "1 jour";
+        } else if ($intervalInString <=31) {
+            $dateInterval = $interval->format('%d')." jours";
+        } else if ($intervalInString < 10000) {
+            $dateInterval = $interval->format('%m')." mois";
+        } else if ($intervalInString > 10000) {
+            $dateInterval = $interval->format('%y')." an et " . $interval->format('%m') ." mois";
+        } else if ($intervalInString > 20000) {
+            $dateInterval = $interval->format('%y')." ans";
+        }
+  
+        return $dateInterval;
+    }
+
+    public function getMessaging(int $id) : array
+    {
+        /*$sql="SELECT messaging.*, user.pseudo, user.avatar_url 
+        FROM messaging LEFT JOIN user ON user.id = sender_id WHERE sender_id = :id
+        UNION 
+        SELECT messaging.*, user.pseudo, user.avatar_url 
+        FROM messaging LEFT JOIN user ON user.id = sender_id WHERE receiver_id = :id";*/
+
+        //GROUP BY datemax du message tester dans PHPmyAdmin
+
+        $sql="SELECT messaging.*, user.pseudo, user.avatar_url 
+        FROM messaging LEFT JOIN user ON user.id = sender_id WHERE sender_id = :id
+        UNION 
+        SELECT messaging.*, user.pseudo, user.avatar_url 
+        FROM messaging LEFT JOIN user ON user.id = sender_id WHERE receiver_id = :id";
+
+        $result = $this->db->query($sql, ['id' => $id]);
+        $messaging = [];
+
+        while ($message = $result->fetch()) {
+            $messages = new Messaging($message);
+            $messaging[] = $messages;
+        }
+        return $messaging;
+    }
+
      /**
       * Get a user by his email (as login) to validate the connection
       * @param string $email
@@ -42,20 +137,21 @@ class UserManager extends AbstractEntityManager
     }
 
     /**
-     * Create a new User in the database
-     * @param : array $user
-     * @return bool $result //check the increase of rows in the database to validate the insert
+     * Update User avatar
+     * @param : int $id
+     * @param : string $avatar
+     * @return void
      */
-    public function addUser($user) : bool
+    public function updateUserAvatar(int $id, string $avatar) : void
     {
-        $sql="INSERT INTO user (`pseudo`, `email`, `password`, `registration_date`) VALUES (:pseudo, :email, :password, NOW())";
+        var_dump($id);
+        var_dump($avatar);
+        $sql="UPDATE user SET avatar_url = :avatar WHERE id = :id";
 
         $result=$this->db->query($sql, [
-            'pseudo' => $user->getPseudo(),
-            'email' => $user->getEmail(),
-            'password' => $user->getPassword()
+            'id' => $id,
+            'avatar' => $avatar
         ]);
-        return $result->rowCount() >0;
     }
 
     /**
@@ -79,91 +175,9 @@ class UserManager extends AbstractEntityManager
         ]);
     }
 
-    /**
-     * Update User avatar
-     * @param : int $id
-     * @param : string $avatar
-     * @return void
-     */
-    public function updateUserAvatar(int $id, string $avatar) : void
-    {
-        var_dump($id);
-        var_dump($avatar);
-        $sql="UPDATE user SET avatar_url = :avatar WHERE id = :id";
 
-        $result=$this->db->query($sql, [
-            'id' => $id,
-            'avatar_url' => $avatar
-        ]);
-    }
 
-    public function getMessaging(int $id) : array
-    {
-        $sql="SELECT messaging.*, user.pseudo, user.avatar_url 
-        FROM messaging LEFT JOIN user ON user.id = sender_id WHERE sender_id = :id
-        UNION 
-        SELECT messaging.*, user.pseudo, user.avatar_url 
-        FROM messaging LEFT JOIN user ON user.id = sender_id WHERE receiver_id = :id";
-
-        $result = $this->db->query($sql, ['id' => $id]);
-        $messaging = [];
-
-        while ($message = $result->fetch()) {
-            $messages = new Messaging($message);
-            $messaging[] = $messages;
-        }
-        return $messaging;
-    }
-
-     /**
-      * Calculate the interval between a date and the current date
-      * @param DateTime $startDate
-      * @return DateTime $dateInterval
-      */
-
-    public function dateInterval($startDate) : string
-    {
-        //Date test
-            /*$d = "2024-10-22 00:00:00";// change the date to test the function
-            $format = 'Y-m-d H:i:s';
-            $startDate = DateTime::createFromFormat($format, $d);
-            var_dump($startDate);*/
-
-        $date = new DateTime();
-        $interval = $startDate->diff($date);
-        $intervalInString = $interval->format('%Y%M%D');
-
-        if ($intervalInString < 2) {
-            $dateInterval = "1 jour";
-        } else if ($intervalInString <=31) {
-            $dateInterval = $interval->format('%d')." jours";
-        } else if ($intervalInString < 10000) {
-            $dateInterval = $interval->format('%m')." mois";
-        } else if ($intervalInString > 10000) {
-            $dateInterval = $interval->format('%y')." an et " . $interval->format('%m') ." mois";
-        } else if ($intervalInString > 20000) {
-            $dateInterval = $interval->format('%y')." ans";
-        }
-
-        return $dateInterval;
-    }
     
-        /**
-     * Create a new Message in the database
-     * @param : array $newMessage
-     * @return bool $result //check the increase of rows in the database to validate the insert
-     */
-    public function addMessage($newMessage) : bool
-    {
-        $sql="INSERT INTO message (`message`, `sender_id`, `receiver_id`, `date`) VALUES (:message, :senderId, :receiverId, NOW())";
-
-        $result=$this->db->query($sql, [
-            'message' => $newMessage->getMessage(),
-            'sender_id' => $newMessage->getSenderId(),
-            'receiver_id' => $newMessage->getReceiverId()
-        ]);
-        return $result->rowCount() >0;
-    }
 
 
 
