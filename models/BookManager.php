@@ -5,6 +5,24 @@
  */
 class BookManager extends AbstractEntityManager 
 {
+
+    /**
+     * Deletes a book
+     * @param int $bookId : id of the book to delete
+     * @return bool $result->rowCount() >0
+     */
+
+     public function deleteBook(int $bookId) : bool
+     {
+         $sql="DELETE FROM book WHERE id = :id";
+         $result = $this->db->query($sql, ["id" => $bookId]);
+ 
+         return $result->rowCount() <0;
+     }
+
+
+
+
     /**
      * Gets books.
      * @param int $limit
@@ -124,15 +142,5 @@ class BookManager extends AbstractEntityManager
         ]);
     }
 
-        /**
-     * Delete book 
-     * @param int $id : id of the book to delete
-     * @return void
-     */
-    public function deleteBook(int $id) : void
-    {
-        $sql = "DELETE FROM book WHERE id = :id";
-        $this->db->query($sql, ['id' => $id]);
-    }
 
 }

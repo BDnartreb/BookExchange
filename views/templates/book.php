@@ -31,7 +31,7 @@
                 </div>
             </a>
             <div class=div-link-button>
-                <a class="link-button" href="index.php?action=messaging&id=<?= $book->getIdUser() ?>">Envoyer un message</a>
+                <a class="link-button" href="index.php?action=messaging&contactid=<?= $book->getIdUser() ?>">Envoyer un message</a>
             </div>
         </div>
     </div>

@@ -84,12 +84,8 @@ p {
 
 /*///////BUTTON///////*/
 .green-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 50px;
-    width : 322px;
-    height: 63px;
+/*    width : 322px;
+    height: 63px;*/
     font-family: "Inter", sans-serif;
     color: #FFFFFF;
     font-size: 16px;
@@ -265,12 +261,17 @@ svg {
 }
 
 .icone-message-count{
+    display: flex;
+    justify-content: center;
     background-color: black;
-    color: red;
     width: 10.5px;
     height: 15px;
     border-radius: 6.75px;
     margin-left: 5px;
+    font-family: "Inter", sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    color:#F5F3EF;
 }
 
 /**
@@ -403,6 +404,12 @@ svg {
 .editbook-form {
     display: flex;
     flex-direction: column;
+}
+
+.editbook-form .green-button {
+    width: 322px;
+    height: 63px;
+    margin-top: 50px;
 }
 
 /**
@@ -623,19 +630,19 @@ main {
     margin-left: 50px;
 }
 
-.contacts {
+.conversations {
     width: 308px;
     height: 893px;
     margin: 50px;
     background-color: #FAF9F7;
 }
 
-.contact-list{
+.conversations-list{
     display: flex;
     flex-direction: column;
 }
 
-.contact-card a {
+.conversations-card a {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -644,24 +651,24 @@ main {
     text-decoration: none;
 }
 
-.contact-card:hover {
+.conversations-card:hover {
     background-color: #FFFFFF;
 }
 
-.contact-avatar {
+.conversations-avatar {
     display: flex;
     align-items: center;
     margin-left: 50px;
     width: 50px;
 }
 
-.contact-avatar img {
+.conversations-avatar img {
     width : 48px;
     height: 48px;
     border-radius: 200px;
 }
 
-.contact-card-content{
+.conversations-card-content{
     display: flex;
     flex-direction: column;
     justify-content:center;
@@ -669,55 +676,62 @@ main {
     margin-left: 5px;
 }
 
-.contact-card-pseudo-date{
+.conversations-card-pseudo-date{
     display: flex;
     flex-direction: row;
 }
 
-.contact-card-pseudo-date p {
+.conversations-card-pseudo-date p {
     font-size: 14px;
     font-weight: 400;
     color:#292929;
 }
 
-.contact-card-text{
-    height: 50%;
+.conversations-card-text{
+    width : 172px;
+    height: 18px;
 }
 
-.contact-card-text p {
+.conversations-card-text p {
     font-size: 12px;
     font-weight: 400;
     color:#A6A6A6;
+    overflow: hidden;
 }
 
-.conversation {
+.overflow-ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.current-conversation {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     width: 1170px;
     height: 893px;
     padding: 50px 50px 50px 50px;
     background-color: #FAF9F7;
 }
 
-.conversation-avatar-pseudo {
+.current-conversation-avatar-pseudo {
     display: flex;
     flex-direction: row;
 }
 
-.conversation-avatar img {
+.current-conversation-avatar img {
     width: 48px;
     height: 48px;
     border-radius: 30px;
 }
 
-.conversation-pseudo {
+.current-conversation-pseudo {
 
 }
 
 .messages{
     display: flex;
     flex-direction: column;
-    justify-content:flex-end;
 }
 
 .message{
@@ -752,31 +766,17 @@ main {
 .message-date{
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
-}
-
-.message-date{
-    display: flex;
-    flex-direction: row;
     font-family: "Inter", sans-serif;
     font-size: 12px;
     font-weight: 400;
     color:#A6A6A6;
 
 }
-.message-text{
-
-}
-.new-message{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-}
 
 .message .blue-fieldset {
     width: 500px;
-    height: 37px;
+    min-height: 37px;
+    height: 100%;
     border-radius: 3px;
     padding-left:10px;
     border: none;
@@ -788,7 +788,8 @@ main {
 
 .message .white-fieldset {
     width: 500px;
-    height: 37px;
+    min-height: 37px;
+    height: 100%;
     border-radius: 3px;
     padding-left:10px;
     border: none;
@@ -798,17 +799,26 @@ main {
     color:#292929;
 }
 
+.new-message{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    /*justify-content: flex-start;
+    align-items: center;*/
+    margin : 100px 0px 100px 0px;
+    background-color: red;
+}
 
 .new-message .white-fieldset{
     width:628px;
     height: 49px;
-    border: 1px solid #F0F0F0;
+/*    border: 1px solid #F0F0F0;*/
+border: 5px solid blue;
 }
 
 .new-message .green-button{
     width:132px;
     height: 49px;
-
 }
 
 

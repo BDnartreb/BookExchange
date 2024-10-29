@@ -7,7 +7,6 @@
 
 <div class="userinfo">
     <h1>Mon compte</h1>
-    <?= var_dump($messageCount); ?>
     <section class="user_personnal_info">
         <div class="visitcard">
             <img src="./images/<?= $user->getAvatarUrl() ?>" alt="">
@@ -92,7 +91,7 @@
                     </div>
                     <div class="book-action">
                         <a href="index.php?action=editbook&id=<?= $book->getId() ?>">Editer</a>
-                        <a href="index.php?action=deletebook&id=<?= $book->getId() ?>">Supprimer</a>
+                        <a href="index.php?action=deletebook&id=<?= $book->getId() ?>" <?= Utils::askConfirmation("Êtes-vous sûr de vouloir supprimer ce livre ?") ?>>Supprimer</a>
                     </div>
             <?php } ?>
         </div>

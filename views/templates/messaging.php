@@ -5,30 +5,25 @@
 ?>
 
 <div class="messaging">
-    <section class="contacts">
+    <section class="conversations">
         <h1>Messagerie</h1>
-            <div class="contact-list">
-                <?php foreach ($messaging as $message) {?>
-                    <?php if($message->getSenderId() == $_SESSION['user']->getId()){
-                        $contactId = $message->getReceiverId();
-                    } else {
-                        $contactId = $message->getSenderId();
-                    } ?>
-                    <div class="contact-card">
-                        <a href="index.php?action=messaging&contact=<?= $contactId ?>">
-                            <div class="contact-avatar">
-                                <img src="./images/<?= $message->getAvatarUrl() ?>">
+            <div class="conversations-list">         
+                <?php foreach ($conversations as $conversation) {?>
+                    <div class="conversations-card">
+                        <a href="index.php?action=messaging&contactid=<?= $conversation->getSenderId() ?>">
+                            <div class="conversations-avatar">
+                                <img src="./images/<?= $conversation->getAvatarUrl() ?>">
                             </div>
-                            <div class="contact-card-content">
-                                <div class="contact-card-pseudo-date">
+                            <div class="conversations-card-content">
+                                <div class="conversations-card-pseudo-date">
                                     <p>
-                                        <?= $message->getPseudo() ?>
-                                        <?= $message->getDate()->format("H-m") ?>
+                                        <?= $conversation->getPseudo() ?>
+                                        <?= $conversation->getDate()->format("H-m") ?>
                                     </p>
                                 </div>
-                                <div class="contact-card-text">
-                                    <p>
-                                        <?= $message->getMessage() ?>
+                                <div class="conversations-card-text">
+                                    <p class="overflow-ellipsis">
+                                        <?= $conversation->getMessage() ?>
                                     </p>
                                 </div>
                             </div>
@@ -37,20 +32,30 @@
                 <?php } ?>
             </div>
     </section>
-    <section class="conversation">
-        <div class="conversation-avatar-pseudo">
-            <div class="conversation-avatar">
-                <img src="./images/<?= $message->getAvatarUrl() ?>">
-            </div>
-            <div class="conversation-pseudo">
-                <?= $message->getPseudo() ?>
-            </div>
+    
+    <section class="current-conversation">
+     
+        <div class="current-conversation-avatar-pseudo">
+            <?php if(isset($messaging)){ ?>
+                <?php foreach($messaging as $message){
+                    if ($message->getSenderId() !== $user->getId()){ ?>
+                        <div class="current-conversation-avatar">
+                            <img src="./images/<?= $message->getAvatarUrl() ?>">
+                        </div>
+                        <div class="current-conversation-pseudo">
+                            <?php echo $message->getPseudo(); ?>
+                        </div>
+                    <?php break;
+                    }
+                } ?>
+            <?php } ?>
         </div>
+        
         <div class="messages">
             <div class="messages-history">
+            <?php if(isset($messaging)){ ?>
                 <?php foreach($messaging as $message){ ?>
                     <div class="message">
-                    <?php if($message->getReceiverId() == $contactId || $message->getSenderId() == $contactId){ ?>
                         <?php if($_SESSION['user']->getId() == $message->getReceiverId()){ ?>
                             <div class="message-receiver">
                                 <div class="message-avatar-date">
@@ -71,19 +76,22 @@
                                 </div>
                             </div>
                         <?php } ?>
-                        <?php } ?>
+                    <?php } ?>
                     </div>
-                <?php } ?>
+                <?php } ?> 
             </div>
+            
             <div class="new-message">
                 <form method="get" name="addmessage"> 
                     <label for="messageText"></label>
                     <input type="hidden" name="action" value="addmessage">
-                    <input type="hidden" name="receiverId" value="<?= $contactId ?>">
+                    <input type="hidden" name="receiverId" value="<?= Utils::request("contactid") ?>">
+                    
                     <input class="white-fieldset" type="text" name="messageText" id="messageText" size="30" maxlength="1500" placeholder="Tapez votre message ici" required>
                     <input class="green-button" type="submit" value="Envoyer">
                 </form>
             </div>
         </div>
+       
     </section>
 </div>

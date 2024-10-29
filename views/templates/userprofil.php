@@ -19,7 +19,7 @@
             <?= $user->getBookCount() ?> livres
         </p>
         <div class="grey-button">
-            <a class="grey-button-text" href="index.php?action=messaging&id=<?=$user->getId()?>">Ecrire un message</a>
+            <a class="grey-button-text" href="index.php?action=messaging&contactid=<?=$user->getId()?>">Ecrire un message</a>
         </div>
     </section>
     <section class="book-list">

@@ -42,7 +42,7 @@ class UserManager extends AbstractEntityManager
 
     
      /**
-      * Calculate the interval between a date and the current date
+      * Calculates the interval between a date and the current date
       * @param DateTime $startDate
       * @return DateTime $dateInterval
       */
@@ -73,24 +73,62 @@ class UserManager extends AbstractEntityManager
   
         return $dateInterval;
     }
+    
+    /**
+     * Gets conversations of the connected user
+     * @param int $id : id of the connected user
+     * @return array $conversations
+     */
 
-    public function getMessaging(int $id) : array
+    public function getConversations(int $id) : array
     {
-        /*$sql="SELECT messaging.*, user.pseudo, user.avatar_url 
-        FROM messaging LEFT JOIN user ON user.id = sender_id WHERE sender_id = :id
-        UNION 
-        SELECT messaging.*, user.pseudo, user.avatar_url 
-        FROM messaging LEFT JOIN user ON user.id = sender_id WHERE receiver_id = :id";*/
-
-        //GROUP BY datemax du message tester dans PHPmyAdmin
-
-        $sql="SELECT messaging.*, user.pseudo, user.avatar_url 
-        FROM messaging LEFT JOIN user ON user.id = sender_id WHERE sender_id = :id
-        UNION 
-        SELECT messaging.*, user.pseudo, user.avatar_url 
-        FROM messaging LEFT JOIN user ON user.id = sender_id WHERE receiver_id = :id";
-
+        $sql="SELECT messaging.*, MAX(messaging.date), user.pseudo, user.avatar_url 
+        FROM messaging LEFT JOIN user ON messaging.sender_id = user.id 
+        WHERE receiver_id = :id GROUP BY messaging.sender_id";
         $result = $this->db->query($sql, ['id' => $id]);
+        $conversations = [];
+     
+        while ($conversation = $result->fetch()) {
+            $c = new Messaging($conversation);
+            $conversations[] = $c;
+        }
+        return $conversations;
+    }
+
+    /**
+      * Gets the count of unread messages of the connected user
+      * @param int $id : of the connected user
+      * @return int $messageCount
+      */
+
+    public function getMessageCount() : ?int
+    {
+        $id = $_SESSION['user']->getId();
+        $sql = "SELECT COUNT(receiver_read) as count FROM messaging WHERE receiver_id = :id AND receiver_read=0";
+        $result = $this->db->query($sql, ['id' => $id]);
+        $count = $result->fetch();
+        $messageCount = $count['count'];
+        return $messageCount;
+
+    }
+
+        /**
+      * Gets messages of the current conversation
+      * @param int $id : id of the connected user
+      * @param int $contactId : id of the contact
+      * @return array : $messaging
+      */
+
+    public function getMessaging(int $id, int $contactId) : array
+    {
+        $sql="SELECT messaging.*, user.pseudo, user.avatar_url 
+        FROM messaging LEFT JOIN user ON user.id = sender_id WHERE sender_id = :id AND receiver_id = :contactid
+        UNION 
+        SELECT messaging.*, user.pseudo, user.avatar_url 
+        FROM messaging LEFT JOIN user ON user.id = sender_id WHERE receiver_id = :id AND sender_id = :contactid
+        ORDER BY date ASC";
+
+        $result = $this->db->query($sql, ['id' => $id, 'contactid' => $contactId]);
         $messaging = [];
 
         while ($message = $result->fetch()) {
@@ -144,8 +182,6 @@ class UserManager extends AbstractEntityManager
      */
     public function updateUserAvatar(int $id, string $avatar) : void
     {
-        var_dump($id);
-        var_dump($avatar);
         $sql="UPDATE user SET avatar_url = :avatar WHERE id = :id";
 
         $result=$this->db->query($sql, [

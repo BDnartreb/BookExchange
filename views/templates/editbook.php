@@ -12,7 +12,7 @@
                 <p>Photo</p> 
                 <img src="./images/<?= $book->getImage() ?>" alt="">
                 <a href="index.php?action=editbook&id=<?= $book->getId() ?>&modif=1" alt="Modifier la photo du livre">Modifier la photo</a>
-                <?php if($_GET['modif'] == 1){ ?>
+                <?php if(isset($_GET['modif']) && $_GET['modif'] == 1) { ?>
                     <form method="get" action="">
                     <label for="image"></label> 
                         <select name="image" id="image">
@@ -41,8 +41,8 @@
                 <label for="status"><p>Disponibilité</p></label>
                     <select class="blue-fieldset" name="status" id="status">
                         <?php if($book->getStatus() == 1){ ?>
-                            <option value="available" selected>disponible</option>
-                            <option value="notavailable">non dispo.</option>
+                            <option value="available" selected>Disponible</option>
+                            <option value="notavailable">Non Disponible</option>
                         <?php } else { ?>
                             <option value="available">disponible</option>
                             <option value="notavailable" selected>non dispo.</option>

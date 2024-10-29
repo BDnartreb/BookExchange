@@ -15,6 +15,9 @@ class UserController extends AbstractController {
         $messageText = Utils::request("messageText");
         $receiverId = Utils::request("receiverId");
         $id = $_SESSION['user']->getId();
+        var_dump($messageText);
+        var_dump($receiverId);
+        var_dump($id);
             if (empty($messageText) || empty($receiverId) || empty($id)){
             throw new Exception ("La requête n'a pas pu aboutir."); 
         }
@@ -33,7 +36,6 @@ class UserController extends AbstractController {
  
         $m = new UserController();
         $messaging = $m->showMessaging();
-
     }
    
     /**
@@ -117,7 +119,6 @@ class UserController extends AbstractController {
         $messageCount = 3;
  
         $view = new View("User");
-       //$view->render("userinfo", ['user' => $user, 'books' => $books, 'dateInterval' => $dateInterval, 'messageCount' => $messageCount]);
         $view->render("userinfo", $this->getParams(['user' => $user, 'books' => $books, 'dateInterval' => $dateInterval]));
 
     }
@@ -130,7 +131,7 @@ class UserController extends AbstractController {
     public function showConnection() : void 
     {
         $view = new View("Connexion");
-        $view->render("connection", []);
+        $view->render("connection", $this->getParams([]));
     }
 
      /**
@@ -141,17 +142,25 @@ class UserController extends AbstractController {
     public function showMessaging() : void
     {
         $id = $_SESSION['user']->getId();
+        $contactId = Utils::request("contactid");
 
         if (empty($id)) {
             throw new Exception("Préciser l'id de l'utilisateur à afficher");
         }
 
         $userManager = new UserManager();
-        $messaging = $userManager->getMessaging($id);
+        $conversations = $userManager->getConversations($id);
         $user = $userManager->getUserInfo($id);
 
         $view = new View();
-        $view->render("messaging", ['messaging' => $messaging, 'user' => $user]);
+
+
+        if (isset($contactId)){
+            $messaging = $userManager->getMessaging($id, $contactId);
+            $view->render("messaging", $this->getParams(['conversations' => $conversations, 'messaging' => $messaging, 'user' => $user]));
+        } else {  
+            $view->render("messaging", $this->getParams(['conversations' => $conversations, 'user' => $user]));
+        }
     }
 
     /**
@@ -162,7 +171,7 @@ class UserController extends AbstractController {
     public function showRegistration() : void 
     {
         $view = new View();
-        $view->render("registration");
+        $view->render("registration", $this->getParams([]));
     }
      
     /**
@@ -173,8 +182,7 @@ class UserController extends AbstractController {
 
     public function showUserProfil() : void
     {
-        //$id = Utils::request("id");
-        $id = $_SESSION['user']->getId();
+        $id = Utils::request("id");
         if (empty($id)) {
             throw new Exception("Préciser l'id de l'utilisateur à afficher");
         }
@@ -189,7 +197,7 @@ class UserController extends AbstractController {
         $userBooks = $books->getBooksByUser($id);
 
         $view = new View("Profile");
-        $view->render("userprofil", ['user' => $user, 'books' => $userBooks, 'dateInterval' => $dateInterval]);
+        $view->render("userprofil", $this->getParams(['user' => $user, 'books' => $userBooks, 'dateInterval' => $dateInterval]));
     }
 
     /**
@@ -208,8 +216,12 @@ class UserController extends AbstractController {
         $u = new UserManager();
         $user = $u->getUserInfo($id);
 
-        $view = new View();
-        $view->render("userinfo", ['user' => $user]);
+        
+        $u = new UserController;
+        $userinfo = $u->editUserInfo();
+
+        /*$view = new View();
+        $view->render("userinfo", $this->getParams(['user' => $user]));*/
     }
 
         /**
@@ -226,11 +238,10 @@ class UserController extends AbstractController {
         $hash = password_hash($password, PASSWORD_DEFAULT);
         $pseudo = Utils::request("pseudo");
         $userManager = new UserManager();
-        $user = $userManager->updateUserInfo($id, $email, $hash, $pseudo);
-        
+        $user = $userManager->updateUserInfo($id, $email, $hash, $pseudo); 
 
         $view = new View();
-        $view->render("home");
+        $view->render("connection",$this->getParams([]));
     }
 
 }

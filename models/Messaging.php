@@ -99,7 +99,6 @@
         $this->date = $date;
     }
 
-
     /**
      * Getter for message date
      * @return DateTime $date
@@ -144,8 +143,6 @@
     {
         return $this->pseudo;
     }  
-
-
 }
 
 

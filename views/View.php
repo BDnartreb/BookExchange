@@ -23,7 +23,6 @@ class View
      * Return a completed page. 
      * @param string $viewPath : path of the templates ordered by the controller. 
      * @param array $params : params from the controller
-     * //////////////////////////////////////////@param ?int $bookCount : number of books owned by the connected user
      * @return string
      */
     public function render(string $viewName, array $params = []) : void 
