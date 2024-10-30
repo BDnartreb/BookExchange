@@ -6,20 +6,6 @@
 class View 
 {
     /**
-     * Title of the page
-     */
-    //private string $title;
-    
-    
-    /**
-     * Constructor. 
-     */
-    /*public function __construct($title) 
-    {
-        $this->title = $title;
-    }*/
-    
-    /**
      * Return a completed page. 
      * @param string $viewPath : path of the templates ordered by the controller. 
      * @param array $params : params from the controller
@@ -49,13 +35,10 @@ class View
         if (file_exists($viewPath)) {
             
             extract($params); // extracts data form the array "params" to transofme them in variables readable by the template.
-            
             ob_start();
             require($viewPath);
-            
             return ob_get_clean();
         } else {
-
             throw new Exception("La vue '$viewPath' est introuvable.");
         }
     }

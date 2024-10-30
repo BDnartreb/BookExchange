@@ -16,10 +16,8 @@
                             </div>
                             <div class="conversations-card-content">
                                 <div class="conversations-card-pseudo-date">
-                                    <p>
-                                        <?= $conversation->getPseudo() ?>
-                                        <?= $conversation->getDate()->format("H-m") ?>
-                                    </p>
+                                    <p class="conversations-card-pseudo"><?= $conversation->getPseudo() ?></p>
+                                    <p class="conversations-card-date"><?= $conversation->getDate()->format("H.m") ?></p>
                                 </div>
                                 <div class="conversations-card-text">
                                     <p class="overflow-ellipsis">
@@ -32,9 +30,7 @@
                 <?php } ?>
             </div>
     </section>
-    
     <section class="current-conversation">
-     
         <div class="current-conversation-avatar-pseudo">
             <?php if(isset($messaging)){ ?>
                 <?php foreach($messaging as $message){
@@ -50,7 +46,6 @@
                 } ?>
             <?php } ?>
         </div>
-        
         <div class="messages">
             <div class="messages-history">
             <?php if(isset($messaging)){ ?>
@@ -60,7 +55,7 @@
                             <div class="message-receiver">
                                 <div class="message-avatar-date">
                                     <img src="./images/<?= $message->getAvatarUrl() ?>">
-                                    <?= $message->getDate()->format("d.m h:i") ?>
+                                    <p><?= $message->getDate()->format("d.m h:i") ?></p>
                                 </div>
                                 <div class="white-fieldset">
                                     <?= $message->getMessage() ?>
@@ -80,7 +75,6 @@
                     </div>
                 <?php } ?> 
             </div>
-            
             <div class="new-message">
                 <form method="get" name="addmessage"> 
                     <label for="messageText"></label>

@@ -89,7 +89,7 @@
                         <a href="index.php?action=editbook&id=<?= $book->getId() ?>">Editer</a>
                         <a href="index.php?action=deletebook&id=<?= $book->getId() ?>" <?= Utils::askConfirmation("Êtes-vous sûr de vouloir supprimer ce livre ?") ?>>Supprimer</a>
                     </div>
-                </div>
+                    </div>
             <?php } ?>
         </div>
     </section>

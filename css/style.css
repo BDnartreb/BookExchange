@@ -193,7 +193,7 @@ header {
     display: flex;
     flex-direction: row;
     height: 80px;
-    background-color: #F5f5f5;
+    background-color: #F5F3EF;
 }
 
 .logo {
@@ -624,16 +624,16 @@ main {
 .messaging {
     display: flex;
     flex-direction: row;
+    height: 893px;
 }
 
 .messaging h1 {
-    margin-left: 50px;
+    margin: 50px 0px 0px 50px;
 }
 
 .conversations {
     width: 308px;
     height: 893px;
-    margin: 50px;
     background-color: #FAF9F7;
 }
 
@@ -671,7 +671,6 @@ main {
 .conversations-card-content{
     display: flex;
     flex-direction: column;
-    justify-content:center;
     height: 50px;
     margin-left: 5px;
 }
@@ -679,17 +678,29 @@ main {
 .conversations-card-pseudo-date{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 50%;
 }
 
-.conversations-card-pseudo-date p {
+.conversations-card-pseudo {
     font-size: 14px;
     font-weight: 400;
     color:#292929;
 }
 
-.conversations-card-text{
+.conversations-card-date {
+    font-size: 12px;
+    font-weight: 400;
+    color:#292929;
+}
+
+.conversations-card-text {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     width : 172px;
-    height: 18px;
+    height: 50%;
 }
 
 .conversations-card-text p {
@@ -710,13 +721,15 @@ main {
     justify-content: space-between;
     width: 1170px;
     height: 893px;
-    padding: 50px 50px 50px 50px;
-    background-color: #FAF9F7;
+    padding: 0px 50px 0px 50px;
+    background-color: #F5F3EF;
 }
 
 .current-conversation-avatar-pseudo {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    margin-top: 50px;
 }
 
 .current-conversation-avatar img {
@@ -726,7 +739,10 @@ main {
 }
 
 .current-conversation-pseudo {
-
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 10px;
 }
 
 .messages{
@@ -748,6 +764,14 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    align-items: center;
+}
+
+.message-avatar-date p {
+    font-size: 12px;
+    font-weight: 400;
+    color:#A6A6A6;
+    margin-left: 5px;
 }
 
 .message-avatar-date img {
@@ -756,7 +780,7 @@ main {
     border-radius: 30px;
 }
 
-.message-sender{
+.message-sender {
     display: flex;
     flex-direction: column;
     justify-content: end;
@@ -802,9 +826,6 @@ main {
 .new-message{
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
-    /*justify-content: flex-start;
-    align-items: center;*/
     margin : 100px 0px 100px 0px;
     background-color: red;
 }
@@ -812,8 +833,7 @@ main {
 .new-message .white-fieldset{
     width:628px;
     height: 49px;
-/*    border: 1px solid #F0F0F0;*/
-border: 5px solid blue;
+    border: 1px solid #F0F0F0;
 }
 
 .new-message .green-button{

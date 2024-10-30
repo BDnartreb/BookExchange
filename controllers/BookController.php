@@ -39,7 +39,7 @@ class BookController extends AbstractController {
         $bookManager = new BookManager();
         $book = $bookManager->getBook($id);
 
-        $view = new View("EditBook");
+        $view = new View();
         $view->render("editbook", $this->getParams(['book' => $book]));
     }
  
@@ -58,7 +58,7 @@ class BookController extends AbstractController {
         $bookManager = new BookManager();
         $book = $bookManager->getBook($idBook);
 
-        $view = new View("Book");
+        $view = new View();
         $view->render("book", $this->getParams(['book' => $book]));
     }
 
@@ -74,7 +74,7 @@ class BookController extends AbstractController {
         $bookManager = new BookManager();
         $books = $bookManager->getBooks($limit);
 
-        $view = new View("Gallery");
+        $view = new View();
         $view->render("gallery", $this->getParams(['books' => $books]));
     }
 
@@ -89,7 +89,7 @@ class BookController extends AbstractController {
          $bookManager = new BookManager();
          $books = $bookManager->getBooks($limit);
  
-         $view = new View("Accueil");
+         $view = new View();
          $view->render("home", $this->getParams(['books' => $books]));
      }
 
@@ -117,7 +117,7 @@ class BookController extends AbstractController {
             throw new Exception("Aucun livre correspondant à vos critères n'a été trouvé");
         } 
 
-        $view = new View("Book");
+        $view = new View();
         $view->render("book", $this->getParams(['book' => $book]));
     }
 

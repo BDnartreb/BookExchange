@@ -118,7 +118,7 @@ class UserController extends AbstractController {
         $dateInterval = $interval->DateInterval($registrationDate);
         $messageCount = 3;
  
-        $view = new View("User");
+        $view = new View();
         $view->render("userinfo", $this->getParams(['user' => $user, 'books' => $books, 'dateInterval' => $dateInterval]));
 
     }
@@ -130,7 +130,7 @@ class UserController extends AbstractController {
 
     public function showConnection() : void 
     {
-        $view = new View("Connexion");
+        $view = new View();
         $view->render("connection", $this->getParams([]));
     }
 
@@ -196,7 +196,7 @@ class UserController extends AbstractController {
         $books = new BookManager();
         $userBooks = $books->getBooksByUser($id);
 
-        $view = new View("Profile");
+        $view = new View();
         $view->render("userprofil", $this->getParams(['user' => $user, 'books' => $userBooks, 'dateInterval' => $dateInterval]));
     }
 
@@ -219,9 +219,6 @@ class UserController extends AbstractController {
         
         $u = new UserController;
         $userinfo = $u->editUserInfo();
-
-        /*$view = new View();
-        $view->render("userinfo", $this->getParams(['user' => $user]));*/
     }
 
         /**

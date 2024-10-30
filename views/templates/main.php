@@ -87,7 +87,7 @@
         </nav>
     </header>
 
-    <main>    
+    <main>   
         <?= $content /* Display in the page the content of the view. */ ?>
     </main>
     
