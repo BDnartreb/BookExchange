@@ -12,12 +12,9 @@ class UserController extends AbstractController {
 
     public function addMessage() : void 
     {
-        $messageText = Utils::request("messageText");
-        $receiverId = Utils::request("receiverId");
+        $messageText = $_POST["messageText"];
+        $receiverId = $_POST["receiverId"];
         $id = $_SESSION['user']->getId();
-        var_dump($messageText);
-        var_dump($receiverId);
-        var_dump($id);
             if (empty($messageText) || empty($receiverId) || empty($id)){
             throw new Exception ("La requête n'a pas pu aboutir."); 
         }
@@ -34,8 +31,11 @@ class UserController extends AbstractController {
             throw new Exception ("message non envoyé !");
         }
  
-        $m = new UserController();
-        $messaging = $m->showMessaging();
+
+        Utils::redirect('messaging', ['contactid' => $receiverId]);
+        /*$m = new UserController();
+        $messaging = $m->showMessaging();*/
+
     }
    
     /**
@@ -46,9 +46,9 @@ class UserController extends AbstractController {
 
     public function addUser() : void 
     {
-        $pseudo = Utils::request("pseudo");
-        $email = Utils::request("email");
-        $password = Utils::request("password");
+        $pseudo = $_POST["pseudo"];
+        $email = $_POST["email"];
+        $password = $_POST["password"];
 
         //encripts the password to store it into the database
         $hash = password_hash($password, PASSWORD_DEFAULT);
@@ -70,7 +70,7 @@ class UserController extends AbstractController {
             throw new Exception ("user non créé !");
         }
  
-         Utils::redirect('connection');
+         Utils::redirect('userinfo');
     }
 
     /**
@@ -79,8 +79,8 @@ class UserController extends AbstractController {
      */
     public function connectUser() : void 
     {
-        $email = Utils::request("email");
-        $password = Utils::request("password");
+        $email = $_POST["email"];
+        $password = $_POST["password"];
 
         if (empty($email) || empty($password)) {
             throw new Exception("Tous les champs sont obligatoires.");

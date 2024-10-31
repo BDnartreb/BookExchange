@@ -7,7 +7,7 @@
 
 <section class="registration">
     <div class="registration-forms">
-        <form class="registration-form" method="get" action="index.php">
+        <form class="registration-form" method="post" action="index.php">
         <h1>Connexion</h1>
         <label for="email"><p>Adresse email</p></label>
         <input class="search" type="text" name="email" id="email" required size="30" maxlength="120">

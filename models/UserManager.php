@@ -82,9 +82,14 @@ class UserManager extends AbstractEntityManager
 
     public function getConversations(int $id) : array
     {
-        $sql="SELECT messaging.*, MAX(messaging.date), user.pseudo, user.avatar_url 
+        $sql="SELECT * FROM (SELECT messaging.*, MAX(messaging.date), user.pseudo, user.avatar_url 
         FROM messaging LEFT JOIN user ON messaging.sender_id = user.id 
-        WHERE receiver_id = :id GROUP BY messaging.sender_id";
+        WHERE receiver_id = :id GROUP BY messaging.sender_id
+        UNION 
+        SELECT messaging.*, MAX(messaging.date), user.pseudo, user.avatar_url 
+        FROM messaging LEFT JOIN user ON messaging.receiver_id = user.id 
+        WHERE sender_id = :id GROUP BY messaging.receiver_id) a GROUP BY pseudo";
+
         $result = $this->db->query($sql, ['id' => $id]);
         $conversations = [];
      

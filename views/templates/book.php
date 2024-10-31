@@ -1,6 +1,6 @@
 <?php
     /**
-     * Display registration form
+     * Display book page
      * 
      */
 ?>

@@ -51,7 +51,7 @@ class BookController extends AbstractController {
      */
     public function showBook() : void
     {
-        $idBook = Utils::request("id");
+        $idBook = $_POST["id"];
         if (empty($idBook)) {
             throw new Exception("Le livre à afficher n'est pas précisé");
         }
@@ -103,8 +103,8 @@ class BookController extends AbstractController {
      */
     public function searchBook() : void
     {
-        $idBook = Utils::request("id");
-        $search = $_GET['book'];
+        $idBook = $_POST["id"];
+        $search = $_POST['book'];
 
         if (empty($search)) {
             throw new Exception("Le livre à afficher n'est pas précisé");
@@ -132,11 +132,11 @@ class BookController extends AbstractController {
 
      public function updateBook() : void 
      {
-        $id = Utils::request("id");
-        $title = Utils::request("title");
-        $author = Utils::request("author");
-        $description = Utils::request("description");
-        $status = Utils::request("status");
+        $id = $_POST["id"];
+        $title = $_POST["title"];
+        $author = $_POST["author"];
+        $description = $_POST["description"];
+        $status = $_POST["status"];
         if ($status == "notavailable"){
             $status = 0;
         } else if ($status == "available"){
@@ -162,8 +162,8 @@ class BookController extends AbstractController {
 
      public function updateBookImage() : void 
      {
-        $id = Utils::request("id");
-        $image = Utils::request("image");
+        $id = $_POST["id"];
+        $image = $_POST["image"];
         $bookManager = new BookManager();
         $bookImage = $bookManager->updateBookImage($id, $image);
 

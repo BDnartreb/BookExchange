@@ -39,7 +39,7 @@
         <div class="modif-card">
             <div class="modif">
                 <h2>Vos informations personnelles</h2>
-                <form class="modif-form" method="get" action="#">
+                <form class="modif-form" method="post" action="#">
                     <div>
                         <label for="email"><p>Adresse email</p></label>   
                         <input class="blue-fieldset" type="text" name="email" id="email" required size="30" maxlength="120" value="<?= $user->getEmail() ?>">

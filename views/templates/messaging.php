@@ -76,7 +76,7 @@
                 <?php } ?> 
             </div>
             <div class="new-message">
-                <form method="get" name="addmessage"> 
+                <form method="post" name="addmessage"> 
                     <label for="messageText"></label>
                     <input type="hidden" name="action" value="addmessage">
                     <input type="hidden" name="receiverId" value="<?= Utils::request("contactid") ?>">

@@ -13,7 +13,7 @@
                 <img src="./images/<?= $book->getImage() ?>" alt="">
                 <a href="index.php?action=editbook&id=<?= $book->getId() ?>&modif=1" alt="Modifier la photo du livre">Modifier la photo</a>
                 <?php if(isset($_GET['modif']) && $_GET['modif'] == 1) { ?>
-                    <form method="get" action="">
+                    <form method="post" action="">
                     <label for="image"></label> 
                         <select name="image" id="image">
                             <?php $scandir = scandir("C:/xampp/htdocs/tests/Projet6/BookExchange/images");
@@ -28,7 +28,7 @@
                 <?php } ?>
             </div>
             <div class="editbook-form">
-                <form method="get" action="#">
+                <form method="post" action="#">
                 <label for="title"><p>Titre</p></label>
                 <input class="blue-fieldset" type="text" name="title" id="title" size="30" maxlength="120" value="<?= $book->getTitle() ?>">
                 
