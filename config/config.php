@@ -1,8 +1,9 @@
 <?php
     
+    //test V14
+
     // Session started by default in case of need. 
     session_start();
-    //blabla
 
      // View paths
     define('TEMPLATE_VIEW_PATH', './views/templates/');
