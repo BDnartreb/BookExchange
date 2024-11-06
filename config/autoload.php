@@ -1,6 +1,6 @@
 <?php
 
-/**
+/** test 15
  * Autoload system to declare require_once automatically
  * PHP uses this function to search classes called in models, controllers, views, services files 
  * If found a requice_once for the class is declared automatically.
