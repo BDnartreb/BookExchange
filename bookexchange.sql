@@ -151,8 +151,11 @@ INSERT INTO `messaging` (`id`, `message`, `sender_id`,`receiver_id`, `receiver_r
 (23, 'Message de 2 à 3 : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam.', '2', '3', '', '2024-10-26 08:15:23'),
 (24, 'Message de 1 à 2 : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam.', '1', '2', '', '2024-10-27 08:15:23'),
 (25, 'Message de 2 à 1 : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam.', '2', '1', '', '2024-10-27 08:15:32'),
-(26, 'Message de 1 à 2 : Lorem', '1', '2', '', '2024-10-27 08:17:23'),
-(27, 'Message de 2 à 1 : ipsum.', '2', '1', '', '2024-10-27 08:18:23');
+(26, 'Message de 1 à 6 : Hello from Camille to HamzaLecture : Lorem', '1', '6', '', '2024-10-31 08:17:23'),
+(27, 'Message de 1 à 2 : Salut Alex C Camille, comment ça va ?', '1', '2', '', '2024-11-01 17:17:23'),
+(28, 'Message de 2 à 1 : Salut Camille, je vais bien merci. Et toi?', '2', '1', '', '2024-11-01 17:18:23'),
+(29, 'Message de 1 à 5 : Bonjour Christiane', '1', '5', '', '2024-11-02 08:17:23'),
+(30, 'Message de 1 à 3 : G beaucoup aimé ton livre', '1', '3', '', '2024-11-03 09:24:23');
 
 
 

@@ -51,7 +51,7 @@ class BookController extends AbstractController {
      */
     public function showBook() : void
     {
-        $idBook = $_POST["id"];
+        $idBook = Utils::request("id");
         if (empty($idBook)) {
             throw new Exception("Le livre à afficher n'est pas précisé");
         }

@@ -82,13 +82,24 @@ class UserManager extends AbstractEntityManager
 
     public function getConversations(int $id) : array
     {
-        $sql="SELECT * FROM (SELECT messaging.*, MAX(messaging.date), user.pseudo, user.avatar_url 
+        $sql="SELECT * FROM (SELECT messaging.*, user.pseudo, user.avatar_url 
         FROM messaging LEFT JOIN user ON messaging.sender_id = user.id 
         WHERE receiver_id = :id GROUP BY messaging.sender_id
         UNION 
-        SELECT messaging.*, MAX(messaging.date), user.pseudo, user.avatar_url 
+        SELECT messaging.*, user.pseudo, user.avatar_url 
         FROM messaging LEFT JOIN user ON messaging.receiver_id = user.id 
         WHERE sender_id = :id GROUP BY messaging.receiver_id) a GROUP BY pseudo";
+
+
+/*$sql="SELECT * FROM (SELECT messaging.*, MAX(messaging.date), user.pseudo, user.avatar_url 
+FROM messaging LEFT JOIN user ON messaging.sender_id = user.id 
+WHERE receiver_id = :id AND messaging.date = (SELECT MAX(messaging.date) FROM messaging WHERE receiver_id = :id) 
+AND messaging.date = (SELECT MAX(messaging.date) FROM messaging WHERE messaging.sender_id = user.id)
+GROUP BY messaging.sender_id
+UNION 
+SELECT messaging.*, MAX(messaging.date), user.pseudo, user.avatar_url 
+FROM messaging LEFT JOIN user ON messaging.receiver_id = user.id 
+WHERE sender_id = :id GROUP BY messaging.receiver_id) a GROUP BY pseudo";*/
 
         $result = $this->db->query($sql, ['id' => $id]);
         $conversations = [];
@@ -140,6 +151,13 @@ class UserManager extends AbstractEntityManager
             $messages = new Messaging($message);
             $messaging[] = $messages;
         }
+
+        /*sql2="UPDATE messaging SET receiver_read = 1 WHERE sender_id = :id AND receiver_id = :contactid";
+        $result = $this->db->query($sql2, ['id' => $id, 'contactid' => $contactId]);*/
+
+        $sql3="UPDATE messaging SET receiver_read = 1 WHERE receiver_id = :id AND sender_id = :contactid";
+        $result = $this->db->query($sql3, ['id' => $id, 'contactid' => $contactId]);
+
         return $messaging;
     }
 

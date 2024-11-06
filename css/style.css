@@ -624,7 +624,7 @@ main {
 .messaging {
     display: flex;
     flex-direction: row;
-    height: 893px;
+    min-height: 893px;
 }
 
 .messaging h1 {
@@ -642,6 +642,16 @@ main {
     flex-direction: column;
 }
 
+.conversations-card-white a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 84px;
+    text-decoration: none;
+    background-color: white;
+}
+
 .conversations-card a {
     display: flex;
     flex-direction: row;
@@ -649,10 +659,6 @@ main {
     width: 100%;
     height: 84px;
     text-decoration: none;
-}
-
-.conversations-card:hover {
-    background-color: #FFFFFF;
 }
 
 .conversations-avatar {
@@ -703,6 +709,14 @@ main {
     height: 50%;
 }
 
+.conversations-card-text-bold {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width : 172px;
+    height: 50%;
+}
+
 .conversations-card-text p {
     font-size: 12px;
     font-weight: 400;
@@ -710,7 +724,19 @@ main {
     overflow: hidden;
 }
 
+.conversations-card-text-bold p {
+    font-size: 12px;
+    font-weight: bold;
+    color:#000000;
+    overflow: hidden;
+}
+
 .overflow-ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.overflow-ellipsis-bold {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
@@ -720,9 +746,9 @@ main {
     flex-direction: column;
     justify-content: space-between;
     width: 1170px;
-    height: 893px;
     padding: 0px 50px 0px 50px;
     background-color: #F5F3EF;
+background-color: #01AC66;
 }
 
 .current-conversation-avatar-pseudo {
@@ -748,6 +774,7 @@ main {
 .messages{
     display: flex;
     flex-direction: column;
+background-color: #C56D6D;
 }
 
 .message{
@@ -826,8 +853,9 @@ main {
 .new-message{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     margin : 100px 0px 100px 0px;
-    background-color: red;
+background-color: red;
 }
 
 .new-message .white-fieldset{

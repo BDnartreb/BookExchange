@@ -15,9 +15,15 @@ class UserController extends AbstractController {
         $messageText = $_POST["messageText"];
         $receiverId = $_POST["receiverId"];
         $id = $_SESSION['user']->getId();
-            if (empty($messageText) || empty($receiverId) || empty($id)){
+        
+        if (empty($messageText) || empty($receiverId) || empty($id)){
             throw new Exception ("La requête n'a pas pu aboutir."); 
         }
+
+        if ($id == Utils::request("contactid")){
+            throw new Exception ("Le message ne peut être envoyer. L'expéditeur et le destinataire sont identiques."); 
+        }
+
         $newMessage = new Messaging ([
             'message' => $messageText,
             'receiverId'=> $receiverId,
