@@ -5,8 +5,8 @@
 
 ?>
 
-<div class="home">
-    <section class="welcome">
+<div class="home" >
+    <section class="welcome" role="region" aria-label="page d'accueil">
         <div class="welcome-txt">
             <h1>Rejoignez nos lecteurs passionnés</h1>
             <p>Donnez une nouvelle vie à vos livres en les échangeant avec d'autres amoureux de la lecture. Nous croyons en la magie du partage de connaissances et d'histoires à travers les livres.</p>
@@ -15,19 +15,19 @@
             </div>
         </div>    
         <div>
-            <img src="./images/HomePicture1.png">
+            <img src="./images/HomePicture1.png" alt="">
         </div>
     </section>
-    <section class="home-gallery">
+    <section class="home-gallery" role="region" aria-label="livres en vente">
         <div>
             <h2>Les derniers livres ajoutés</h2>
         </div>
-        <div class="book-cards">
+        <div class="book-cards" aria-label="mini gallerie des derniers livres mis en vente">
         <?php foreach($books as $book) { ?>
                 <a href="index.php?action=book&id=<?= $book->getId() ?>">
                     <article class="card-content">
-                        <img src="./images/<?= $book->getImage() ?>">
-                        <div class="card-txt">
+                        <img src="./images/<?= $book->getImage() ?>" alt="image du livre">
+                        <div class="card-txt" aria-label="titre, auteur et pseudo du propriétaire">
                             <h3 class="card-title"><?= $book->getTitle() ?></h3>
                             <h4 class="card-author"><?= $book->getAuthor() ?></h4>
                             <h5 class="card-vendor">Vendu par : <?= $book->getPseudo() ?></h5>
@@ -37,10 +37,10 @@
         <?php } ?>
         </div>
         <div class=div-link-button>
-            <a class="link-button" href="index.php?action=gallery">Voir tous les livres</a>
+            <a class="link-button" href="index.php?action=gallery" alt="lien vers la gallerie des livres">Voir tous les livres</a>
         </div>
     </section>
-    <section class="instructions">
+    <section class="instructions" role="region" aria-label="instruction d'utilisation du site">
         <div class="instructions-title">
                 <h2 id="welcomeanchor">Comment ça marche ?</h2>
                 <div class="instructions-subtitle">
@@ -54,13 +54,13 @@
                 <div class="step-card"><p>Proposez un échange et discutez avec d'autres passionnés de lecture.</p></div>
             </div>
             <div class=div-link-button>
-                <a class="link-button" href="index.php?action=gallery">Voir tous les livres</a>
+                <a class="link-button" href="index.php?action=gallery" alt="lien vers la gallerie des livres">Voir tous les livres</a>
             </div>
             <div class="instructions-img">
-                <img src="./images/HomePicture2-Desk.png" class="home-picture-2">
+                <img src="./images/HomePicture2-Desk.png" alt="" class="home-picture-2">
             </div>
     </section>
-    <section class="values">
+    <section class="values" role="region" aria-label="les valeurs">
         <div class="values-content">
             <h2>Nos valeurs</h2>
             <p>Chez Tom Troc, nous mettons l'accent sur le partage, la découverte et la communauté.

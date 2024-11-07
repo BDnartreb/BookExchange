@@ -84,8 +84,6 @@ p {
 
 /*///////BUTTON///////*/
 .green-button {
-/*    width : 322px;
-    height: 63px;*/
     font-family: "Inter", sans-serif;
     color: #FFFFFF;
     font-size: 16px;
@@ -112,16 +110,6 @@ p {
     font-weight: 600;
     color: #00AC66;
     text-decoration: none;
-}
-
-.search {
-    align-items: center;
-    background-color: #ffffff;
-    width:322px;
-    height: 50px;
-    border-radius: 6px;
-    border: 0px;
-    margin-bottom: 20px;
 }
 
 .link-button {
@@ -360,6 +348,9 @@ svg {
 /**
 * editbook
 */
+.editbook-page a {
+    text-decoration: none;
+}
 
 .editbook{
     display: flex;
@@ -392,7 +383,6 @@ svg {
 }
 
 .editbook-picture a {
-    
     font-family: "Inter", sans-serif;
     font-size: 12px;
     font-weight: 400;
@@ -401,9 +391,23 @@ svg {
     margin-top: 20px;
 }
 
-.editbook-form {
+.editbook-modif {
     display: flex;
     flex-direction: column;
+    padding-top : 15px ;
+
+}
+
+.editbook-form .blue-fieldset {
+    margin : 10px 0px 30px 0px;
+}
+
+.editbook-form .label-text {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color:#a6a6a6;
+    margin-bottom: 10px;
 }
 
 .editbook-form .green-button {
@@ -434,8 +438,15 @@ svg {
 }
 
 .book-search {
+    display: flex;
+    align-items: center;
     background-color:white;
+    width: 322px;
     height:50px;
+}
+
+.book-search .book-fieldset {
+    border:0px;
 }
 
 .book-search svg {
@@ -748,7 +759,6 @@ main {
     width: 1170px;
     padding: 0px 50px 0px 50px;
     background-color: #F5F3EF;
-background-color: #01AC66;
 }
 
 .current-conversation-avatar-pseudo {
@@ -774,7 +784,6 @@ background-color: #01AC66;
 .messages{
     display: flex;
     flex-direction: column;
-background-color: #C56D6D;
 }
 
 .message{
@@ -834,7 +843,6 @@ background-color: #C56D6D;
     font-family: "Inter", sans-serif;
     font-size: 12px;
     font-weight: 400;
-    color:#292929;
 }
 
 .message .white-fieldset {
@@ -850,18 +858,22 @@ background-color: #C56D6D;
     color:#292929;
 }
 
-.new-message{
+.new-message {
+    margin : 100px 0px 100px 0px;
+}
+
+.new-message-form {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    margin : 100px 0px 100px 0px;
-background-color: red;
+    align-items: center;
+
 }
 
 .new-message .white-fieldset{
     width:628px;
     height: 49px;
     border: 1px solid #F0F0F0;
+    margin-right: 30px;
 }
 
 .new-message .green-button{
@@ -895,10 +907,12 @@ background-color: red;
     text-decoration: none;
 }
 
-.registration-form label {
+.registration-form .label-text {
     font-family: "Inter", sans-serif;
     font-size: 14px;
+    font-weight: 400;
     color:#a6a6a6;
+    margin-bottom: 10px;
 }
 
 .registration-picture {
@@ -909,6 +923,15 @@ background-color: red;
     width: 720px;
     height: 886px
 }
+
+
+.registration-form .white-fieldset {
+    width:322px;
+    border: 0px;
+    margin-bottom: 20px;
+    padding: 0px;
+}
+
 
 /**
 * userinfo
@@ -958,7 +981,11 @@ background-color: red;
     background-color: #FFFFFF;
 }
 
-.modif p {
+.modif h2 {
+    margin-bottom:30px;
+}
+
+.modif-form .label-text {
     font-family: "Inter", sans-serif;
     font-size: 14px;
     font-weight:400;
@@ -967,10 +994,11 @@ background-color: red;
 
 .modif .blue-fieldset {
     width: 322px;
-    margin-bottom:10px;
+    margin: 5px 0px 30px 0px;
 }
 
 .modif .grey-button {
+    width: 150px;
     margin-top: 20px;
     margin-bottom: 20px;
 }

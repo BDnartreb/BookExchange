@@ -6,8 +6,8 @@
 ?>
 
 <div class="userprofil">
-    <section class="visitcard">
-        <img src="./images/<?= $user->getAvatarUrl() ?>" alt="">
+    <section class="visitcard" role="region" aria-label="profil du correspondant sélectionné">
+        <img src="./images/<?= $user->getAvatarUrl() ?>" alt="avatar du correespondant">
         <p class="pseudo"><?= $user->getPseudo() ?></p>
         <p class="member-until">Membre depuis <?= $dateInterval ?> </p>
         <p class="bibliotheque">BIBLIOTHEQUE</p>
@@ -19,11 +19,11 @@
             <?= $user->getBookCount() ?> livres
         </p>
         <div class="grey-button">
-            <a class="grey-button-text" href="index.php?action=messaging&contactid=<?=$user->getId()?>">Ecrire un message</a>
+            <a class="grey-button-text" href="index.php?action=messaging&contactid=<?=$user->getId()?>" alt="envoyer un message à ce correspondant">Ecrire un message</a>
         </div>
     </section>
-    <section class="book-list">
-        <div class="book-list-title">
+    <section class="book-list" role="region" aria-label="liste des livres proposés par le correspondant">
+        <div class="book-list-title" aria-label="tableau des livres proposés">
             <div class="list-title">PHOTO</div>
             <div class="list-title">TITRE</div>
             <div class="list-title">AUTEUR</div>
@@ -36,7 +36,7 @@
                 } else {
                     echo "<div class=\"line oddline\">";
                 } ?>           
-                    <div class="book-image"> <img src="./images/<?= $book->getImage() ?>"> </div>
+                    <div class="book-image"> <img src="./images/<?= $book->getImage() ?>" alt="image du livre"> </div>
                     <div class="book-title"> <?= $book->getTitle() ?> </div>
                     <div class="book-author"> <?= $book->getAuthor() ?> </div>
                     <div class="book-description"> <?= $book->getDescription() ?> </div>

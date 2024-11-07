@@ -5,24 +5,24 @@
      */
 ?>
 
-<section class="registration">
+<section class="registration" role="region" aria-label="page de connexion">
     <div class="registration-forms">
         <h1>Inscription</h1>
-        <form class="registration-form" method="get" action="index.php">
-            <div>
-                <label for="pseudo"><p>Pseudo</p></label>   
-                <input class="search" type="text" name="pseudo" id="pseudo" required size="30" maxlength="120">
+        <form class="registration-form" method="get" action="index.php" role="form">
+            <div class="registration-form">
+                <label for="pseudo"  class="label-text">Pseudo</label>   
+                <input class="white-fieldset" type="text" name="pseudo" id="pseudo" required size="30" maxlength="120">
 
-                <label for="email"><p>Adresse Email</p></label>  
-                <input class="search" type="text" name="email" id="email" required size="30" maxlength="120">
+                <label for="email" class="label-text">Adresse Email</label>  
+                <input class="white-fieldset" type="text" name="email" id="email" required size="30" maxlength="120">
                
-                <label for="password"><p>Mot de passe</p></label> 
-                <input class="search" type="text" name="password" id="password" required size="30" maxlength="120">
+                <label for="password"  class="label-text">Mot de passe</label> 
+                <input class="white-fieldset" type="text" name="password" id="password" required size="30" maxlength="120">
             </div>
             <div class="submit-button">
                 <input type="hidden" name="action" value="adduser">
                 <input class="link-button" type="submit" value="S'inscrire">
-                <p>Déjà inscrit ? <a href="index.php?action=connection">Connectez-vous</a></p>
+                <p>Déjà inscrit ? <a href="index.php?action=connection" alt="lien vers page de connexion">Connectez-vous</a></p>
             </div>
         </form>
     </div>

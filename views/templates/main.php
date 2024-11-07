@@ -21,9 +21,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700&display=swap" rel="stylesheet">
     <!-- Inter Google Font-->
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    <!-- Inter Google Font-->
+    <!-- Playfair Dispaly Google Font-->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-    
+    <!-- Font Awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
@@ -33,7 +33,7 @@
    </head>
 
 <body>
-    <header>
+    <header role="banner">
         <div class="logo">
             <div class="TT-logo-greenbackground">
                 <!--TT white Logo-->
@@ -50,12 +50,12 @@
             </div>
         </div>
         
-        <nav role="navigation" class="main-nav">
-            <div class="main-nav-1">
+        <nav class="main-nav" role="navigation">
+            <div class="main-nav-1" role="navigation" aria-label="navigation zone 1">
                 <a class="nav-link" href="index.php?action=home">Accueil</a>
                 <a class="nav-link" href="index.php?action=gallery">Nos livres à l'échange</a>
             </div>
-            <div class="main-nav-2">
+            <div class="main-nav-2" role="navigation" aria-label="navigation zone 2">
 
                 <?php if ($_SESSION){ ?>
                     
@@ -65,7 +65,7 @@
                         <path d="M12.5342 10.8594L12.3182 11.0439L12.4441 11.2822V12.7332L11.1804 12.0036L11.0119 11.8558L10.8037 11.9494C9.81713 12.3931 8.6938 12.645 7.5 12.645C3.50458 12.645 0.355 9.84779 0.355 6.5C0.355 3.15221 3.50458 0.355 7.5 0.355C11.4954 0.355 14.645 3.15221 14.645 6.5C14.645 8.19467 13.8458 9.73885 12.5342 10.8594ZM11.1765 12.0014C11.1765 12.0014 11.1766 12.0014 11.1766 12.0014L11.1765 12.0014L11.1765 12.0014Z" stroke="#292929" stroke-width="0.71"/>
                     </svg>
                     <a href="index.php?action=messaging">Messagerie</a>
-                    <div class="icone-message-count">
+                    <div class="icone-message-count" aria-label="nombre de messages non lus">
                         <?php echo $params['messageCount']; ?>
                     </div>
                 </div>
@@ -91,8 +91,8 @@
         <?= $content /* Display in the page the content of the view. */ ?>
     </main>
     
-    <footer>
-        <nav class="nav-footer">
+    <footer role="contentinfo">
+        <nav class="nav-footer" role="navigation">
             <a href="#">Politique de confidentialité</a>
             <a href="#">Mentions légales</a>
             <a href="#">Tom Troc<i class="fa-regular fa-copyright"></i></a>

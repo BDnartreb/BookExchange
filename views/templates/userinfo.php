@@ -7,12 +7,12 @@
 
 <div class="userinfo">
     <h1>Mon compte</h1>
-    <section class="user_personnal_info">
-        <div class="visitcard">
-            <img src="./images/<?= $user->getAvatarUrl() ?>" alt="">
+    <section class="user_personnal_info" role="region" aria-label="vos informations personnelles">
+        <div class="visitcard" aria-label="vos informations">
+            <img src="./images/<?= $user->getAvatarUrl() ?>" alt="votre avatar">
             <a class="standard-link" href="index.php?action=userinfo&modif=1" alt="Modifier avatar du user">modifier</a>
             <?php if(isset($_GET['modif']) && $_GET['modif'] == 1){ ?>
-                <form method="get" action="">
+                <form method="get" action="index.php" role="form">
                     <label for="avatar"></label> 
                     <select name="avatar" id="avatar">
                         <?php $scandir = scandir("C:/xampp/htdocs/tests/Projet6/BookExchange/images");
@@ -39,16 +39,16 @@
         <div class="modif-card">
             <div class="modif">
                 <h2>Vos informations personnelles</h2>
-                <form class="modif-form" method="post" action="#">
+                <form class="modif-form" method="post" action="index.php" role="form">
                     <div>
-                        <label for="email"><p>Adresse email</p></label>   
+                        <label for="email" class="label-text">Adresse email</label>   
                         <input class="blue-fieldset" type="text" name="email" id="email" required size="30" maxlength="120" value="<?= $user->getEmail() ?>">
-                        <label for="password"><p>Mot de passe</p></label>   
+                        <label for="password" class="label-text">Mot de passe</label>   
                         <input class="blue-fieldset" type="text" name="password" id="password" required size="30" maxlength="120" placeholder="***********">
-                        <label for="pseudo"><p>Pseudo</p></label>   
+                        <label for="pseudo" class="label-text">Pseudo</label>   
                         <input class="blue-fieldset" type="text" name="pseudo" id="pseudo" required size="30" maxlength="120" value="<?= $user->getPseudo() ?>">
                     </div>
-                    <div class="submit-button">
+                    <div class="submit-button" aria-label="bouton pour soumettre les modifications">
                         <input type="hidden" name="action" value="updateuserinfo">
                         <input class="grey-button grey-button-text" type="submit" value="Enregistrer">
                     </div>
@@ -56,8 +56,8 @@
             </div>
         </div>
     </section>
-    <section class="book-list">
-        <div class="book-list-title">
+    <section class="book-list" role="region" aria-label="liste de vos livres">
+        <div class="book-list-title" aria-label="tableau de présentation de vos livres">
             <div class="list-title">PHOTO</div>
             <div class="list-title">TITRE</div>
             <div class="list-title">AUTEUR</div>
@@ -72,7 +72,7 @@
                 } else {
                     echo "<div class=\"line oddline\">";
                 } ?>           
-                    <div class="book-image"> <img src="./images/<?= $book->getImage() ?>"> </div>
+                    <div class="book-image"> <img src="./images/<?= $book->getImage() ?>" alt="image du livre"> </div>
                     <div class="book-title"> <?= $book->getTitle() ?> </div>
                     <div class="book-author"> <?= $book->getAuthor() ?> </div>
                     <div class="book-description"> <?= $book->getDescription() ?> </div>
@@ -86,8 +86,8 @@
                         ?>
                     </div>
                     <div class="book-action">
-                        <a href="index.php?action=editbook&id=<?= $book->getId() ?>">Editer</a>
-                        <a href="index.php?action=deletebook&id=<?= $book->getId() ?>" <?= Utils::askConfirmation("Êtes-vous sûr de vouloir supprimer ce livre ?") ?>>Supprimer</a>
+                        <a href="index.php?action=editbook&id=<?= $book->getId() ?>" alt="lien vers la page de présentation du livre">Editer</a>
+                        <a href="index.php?action=deletebook&id=<?= $book->getId() ?>" <?= Utils::askConfirmation("Êtes-vous sûr de vouloir supprimer ce livre ?") ?> alt="suppression du livre">Supprimer</a>
                     </div>
                 </div>
             <?php } ?>
