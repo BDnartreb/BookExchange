@@ -82,24 +82,16 @@ class UserManager extends AbstractEntityManager
 
     public function getConversations(int $id) : array
     {
-        $sql="SELECT * FROM (SELECT messaging.*, user.pseudo, user.avatar_url 
-        FROM messaging LEFT JOIN user ON messaging.sender_id = user.id 
-        WHERE receiver_id = :id GROUP BY messaging.sender_id
+        $sql="SELECT id, message, sender_id, receiver_id, receiver_read, MAX(date) as date, pseudo, avatar_url
+        FROM (
+        SELECT m1.id, m1.message, m1.sender_id, m1.receiver_id, m1.receiver_read, MAX(m1.date) as date, user.pseudo, user.avatar_url 
+        FROM messaging m1 LEFT JOIN user ON m1.sender_id = user.id 
+        WHERE receiver_id = :id GROUP BY m1.sender_id
         UNION 
-        SELECT messaging.*, user.pseudo, user.avatar_url 
-        FROM messaging LEFT JOIN user ON messaging.receiver_id = user.id 
-        WHERE sender_id = :id GROUP BY messaging.receiver_id) a GROUP BY pseudo";
-
-
-/*$sql="SELECT * FROM (SELECT messaging.*, MAX(messaging.date), user.pseudo, user.avatar_url 
-FROM messaging LEFT JOIN user ON messaging.sender_id = user.id 
-WHERE receiver_id = :id AND messaging.date = (SELECT MAX(messaging.date) FROM messaging WHERE receiver_id = :id) 
-AND messaging.date = (SELECT MAX(messaging.date) FROM messaging WHERE messaging.sender_id = user.id)
-GROUP BY messaging.sender_id
-UNION 
-SELECT messaging.*, MAX(messaging.date), user.pseudo, user.avatar_url 
-FROM messaging LEFT JOIN user ON messaging.receiver_id = user.id 
-WHERE sender_id = :id GROUP BY messaging.receiver_id) a GROUP BY pseudo";*/
+        SELECT m2.id, m2.message, m2.sender_id, m2.receiver_id, m2.receiver_read, MAX(m2.date) as date, user.pseudo, user.avatar_url 
+        FROM messaging m2 LEFT JOIN user ON m2.receiver_id = user.id 
+        WHERE sender_id = :id GROUP BY m2.receiver_id
+        ) a GROUP BY pseudo ORDER BY MAX(date) DESC";
 
         $result = $this->db->query($sql, ['id' => $id]);
         $conversations = [];
@@ -152,8 +144,8 @@ WHERE sender_id = :id GROUP BY messaging.receiver_id) a GROUP BY pseudo";*/
             $messaging[] = $messages;
         }
 
-        /*sql2="UPDATE messaging SET receiver_read = 1 WHERE sender_id = :id AND receiver_id = :contactid";
-        $result = $this->db->query($sql2, ['id' => $id, 'contactid' => $contactId]);*/
+        $sql2="UPDATE messaging SET receiver_read = 1 WHERE sender_id = :id AND receiver_id = :contactid";
+        $result = $this->db->query($sql2, ['id' => $id, 'contactid' => $contactId]);
 
         $sql3="UPDATE messaging SET receiver_read = 1 WHERE receiver_id = :id AND sender_id = :contactid";
         $result = $this->db->query($sql3, ['id' => $id, 'contactid' => $contactId]);
