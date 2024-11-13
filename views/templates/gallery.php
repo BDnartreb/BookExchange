@@ -15,7 +15,7 @@
             <label for="book"></label>
             <input type="hidden" name="action" value="searchbook">
             <input class="book-fieldset" type="text" name="book" id="book" placeholder="Rechercher un livre" size="30" maxlength="120">
-       </form>
+        </form>
     </div>
     <div class="book-cards" aria-label="gallerie des fiches d'information de chaque livre">
         <?php foreach($books as $book) { ?>

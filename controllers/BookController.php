@@ -97,14 +97,13 @@ class BookController extends AbstractController {
      
 
  /**
-     * Search a book by its title
-     * @param : string $search (id of the book)
+     * Search a book by its title or its author
+     * @param : string $search (title or author of the book)
      * @return void
      */
     public function searchBook() : void
     {
-        $idBook = $_POST["id"];
-        $search = $_POST['book'];
+        $search = $_GET['book'];
 
         if (empty($search)) {
             throw new Exception("Le livre à afficher n'est pas précisé");

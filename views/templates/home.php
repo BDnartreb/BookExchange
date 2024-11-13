@@ -23,7 +23,7 @@
             <h2>Les derniers livres ajoutés</h2>
         </div>
         <div class="book-cards" aria-label="mini gallerie des derniers livres mis en vente">
-        <?php foreach($books as $book) { ?>
+            <?php foreach($books as $book) { ?>
                 <a href="index.php?action=book&id=<?= $book->getId() ?>">
                     <article class="card-content">
                         <img src="./images/<?= $book->getImage() ?>" alt="image du livre">
@@ -34,7 +34,7 @@
                         </div>
                     </article>
                 </a>
-        <?php } ?>
+            <?php } ?>
         </div>
         <div class=div-link-button>
             <a class="link-button" href="index.php?action=gallery" alt="lien vers la gallerie des livres">Voir tous les livres</a>
@@ -42,10 +42,10 @@
     </section>
     <section class="instructions" role="region" aria-label="instruction d'utilisation du site">
         <div class="instructions-title">
-                <h2 id="welcomeanchor">Comment ça marche ?</h2>
-                <div class="instructions-subtitle">
-                    <p> Echanger des livres avec TomTroc c'est simple et amusant ! Suivez ces étapes pour commencer :</p>
-                </div>
+            <h2 id="welcomeanchor">Comment ça marche ?</h2>
+            <div class="instructions-subtitle">
+                <p> Echanger des livres avec TomTroc c'est simple et amusant ! Suivez ces étapes pour commencer :</p>
+            </div>
         </div>
             <div class="steps">
                 <div class="step-card"><p>Inscrivez-vous gratuitement sur notre plateforme.</p></div>

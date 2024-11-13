@@ -47,7 +47,6 @@
         return $this->email;
     }
     
-
     /**
      * Setter for password
      * @param : string $password
@@ -79,7 +78,6 @@
         }
         $this->registrationDate = $registrationDate;
     }
-
 
     /**
      * Getter for date of registration

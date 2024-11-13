@@ -5,7 +5,6 @@
  */
 class BookManager extends AbstractEntityManager 
 {
-
     /**
      * Deletes a book
      * @param int $bookId : id of the book to delete
@@ -20,10 +19,7 @@ class BookManager extends AbstractEntityManager
          return $result->rowCount() <0;
      }
 
-
-
-
-    /**
+     /**
      * Gets books.
      * @param int $limit
      * @return : array
@@ -102,10 +98,7 @@ class BookManager extends AbstractEntityManager
 
         return null;
     }
-
     
-
-   
     /**
      * Update book information
      * @param int $id

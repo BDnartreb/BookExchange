@@ -2,23 +2,13 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le : ven. 24 nov. 2023 à 12:39
--- Version du serveur : 5.7.36
--- Version de PHP : 8.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
 --
--- Base de données : `bookexchange`
+-- Data base : `bookexchange`
 --
 
 -- --------------------------------------------------------
@@ -52,7 +42,7 @@ INSERT INTO `book` (`id`, `title`, `author`, `image`, `description`, `status`, `
 (5, 'Delight!', 'Justin Rossow', 'Delight.png ', 'Description Delight', '1', '4'),
 (6, 'Milwaukee Mission', 'Elder Cooper Low', 'MilwaukeeMission.png ', 'Description Milwaukee Mission', '1', '5'),
 (7, 'Minimalist Graphics', 'Julia Schonlau', 'MinimalistGraphics.png ', 'Description Minimalist Graphics', '1', '6'),
-(8, 'Hygge', 'Meik Wiking', 'Hygge.png', 'Description Hygge', '1', '16'),
+(8, 'Hygge', 'Meik Wiking', 'Hygge.png', 'Description Hygge', '1', '3'),
 (9, 'Innovation', 'Matt Ridley', 'Innovation.png ', 'Description Innovation', '1', '7'),
 (10, 'Psalms', 'Alabaster', 'Psalms.png ', 'Description Psalms', '1', '8'),
 (11, 'Thinking, Fast & Slow', 'Daniel Kahneman', 'ThinkingFastSlow.png ', 'Description Thinking, Fast & Slow', '1', '9'),
@@ -61,8 +51,8 @@ INSERT INTO `book` (`id`, `title`, `author`, `image`, `description`, `status`, `
 (14, 'Narnia', 'C.S Lewis', 'Narnia.png ', 'Description Narnia', '1', '12'),
 (15, 'Company Of One', 'Paul Jarvis', 'CompanyOfOne.png ', 'Description Company Of One', '1', '14'),
 (16, 'The Two Towers', 'J.R.R Tolkien', 'TheTwoTowers.png ', 'Description The Two Towers', '1', '15'),
-(17, '17', 'Beth Kempton', 'WabiSabi.png ', 'Description 18', '1', '1'),
-(18, '18', 'Beth Kempton', 'WabiSabi.png ', 'Description 19', '1', '1');
+(17, 'Titre du livre 17', 'Unknown', 'avatarbook.png ', 'Description du livre 17', '0', '1'),
+(18, 'Titre du livre 18', 'Auteur inconnu', 'avatarbook.png ', 'Description du livre 18', '1', '1');
 
 -- --------------------------------------------------------
 
@@ -101,7 +91,7 @@ INSERT INTO `user` (`id`, `pseudo`, `email`,`password`, `registration_date`, `av
 (13, 'Paul Jarvis', 'polo@home.fr', '$2y$10$bqbCb5Kfoeutiadn6Kl6WuafJFFeN/y6KlYrCD9OD7vFH4ws8.pBW', '2024-08-25', 'avatar13.jpg'),
 (14, 'Victoirefabr912', 'vic@home.fr', '$2y$10$bqbCb5Kfoeutiadn6Kl6WuafJFFeN/y6KlYrCD9OD7vFH4ws8.pBW', '2024-09-12', 'avatar14.jpg'),
 (15, 'Lotrfanclub67', 'lotrfanclub@home.fr', '$2y$10$bqbCb5Kfoeutiadn6Kl6WuafJFFeN/y6KlYrCD9OD7vFH4ws8.pBW', '2024-09-21', 'avatar15.jpg'),
-(16, 'Hugo1990_12', 'Ugo@home.fr', '$2y$10$bqbCb5Kfoeutiadn6Kl6WuafJFFeN/y6KlYrCD9OD7vFH4ws8.pBW', '2024-09-22', 'avatar16.jpg');
+(16, 'Hugo1990_12', 'Ugo@home.fr', '$2y$10$bqbCb5Kfoeutiadn6Kl6WuafJFFeN/y6KlYrCD9OD7vFH4ws8.pBW', '2024-09-22', 'avatar3.jpg');
 
 -- --------------------------------------------------------
 
@@ -158,18 +148,3 @@ INSERT INTO `messaging` (`id`, `message`, `sender_id`,`receiver_id`, `receiver_r
 (30, 'Message de 1 à 3 : G beaucoup aimé ton livre', '1', '3', '', '2024-11-03 09:24:23');
 
 
-
---
--- Contraints for tables
---
-
---
--- Contraint for table `book`
---
-ALTER TABLE `book`
-  ADD CONSTRAINT `link_book_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

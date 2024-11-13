@@ -172,8 +172,6 @@ p {
     background-color: #F5F3EF;
 }
 
-
-
 /**
 * header
 */
@@ -881,7 +879,6 @@ main {
     height: 49px;
 }
 
-
 /**
 * registration / connection
 */
@@ -923,7 +920,6 @@ main {
     width: 720px;
     height: 886px
 }
-
 
 .registration-form .white-fieldset {
     width:322px;
@@ -1114,7 +1110,6 @@ main {
     font-size: 14px;
     font-weight:400;
     color:#292929;
-
 }
 
 .visitcard .grey-button {
@@ -1140,7 +1135,6 @@ main {
 .userprofil .book-description{
     width : 25%;
 }
-
 
 
 /**

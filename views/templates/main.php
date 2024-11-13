@@ -28,9 +28,7 @@
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="./css/style.css">
-
-
-   </head>
+</head>
 
 <body>
     <header role="banner">
@@ -56,9 +54,7 @@
                 <a class="nav-link" href="index.php?action=gallery">Nos livres à l'échange</a>
             </div>
             <div class="main-nav-2" role="navigation" aria-label="navigation zone 2">
-
                 <?php if ($_SESSION){ ?>
-                    
                 <div class="nav-link">
                     <!--icone messaging-->
                     <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -96,7 +92,6 @@
             <a href="#">Politique de confidentialité</a>
             <a href="#">Mentions légales</a>
             <a href="#">Tom Troc<i class="fa-regular fa-copyright"></i></a>
-
         </nav>
         <div>
             <!--Logo TT green -->
@@ -106,6 +101,5 @@
             </svg>
         </div>
     </footer>
-
 </body>
 </html>

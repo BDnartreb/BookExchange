@@ -37,10 +37,7 @@ class UserController extends AbstractController {
             throw new Exception ("message non envoyé !");
         }
  
-
         Utils::redirect('messaging', ['contactid' => $receiverId]);
-        /*$m = new UserController();
-        $messaging = $m->showMessaging();*/
 
     }
    

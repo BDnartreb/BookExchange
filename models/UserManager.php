@@ -5,7 +5,6 @@
  */
 class UserManager extends AbstractEntityManager 
 {
-
     /**
      * Create a new Message in the database
      * @param : array $newMessage
@@ -39,7 +38,6 @@ class UserManager extends AbstractEntityManager
         ]);
         return $result->rowCount() >0;
     }
-
     
      /**
       * Calculates the interval between a date and the current date
@@ -144,11 +142,8 @@ class UserManager extends AbstractEntityManager
             $messaging[] = $messages;
         }
 
-        $sql2="UPDATE messaging SET receiver_read = 1 WHERE sender_id = :id AND receiver_id = :contactid";
+        $sql2="UPDATE messaging SET receiver_read = 1 WHERE receiver_id = :id AND sender_id = :contactid";
         $result = $this->db->query($sql2, ['id' => $id, 'contactid' => $contactId]);
-
-        $sql3="UPDATE messaging SET receiver_read = 1 WHERE receiver_id = :id AND sender_id = :contactid";
-        $result = $this->db->query($sql3, ['id' => $id, 'contactid' => $contactId]);
 
         return $messaging;
     }

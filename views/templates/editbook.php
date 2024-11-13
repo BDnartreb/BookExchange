@@ -14,7 +14,7 @@
             <a href="index.php?action=editbook&id=<?= $book->getId() ?>&modif=1" alt="Modifier la photo du livre">Modifier la photo</a>
             <?php if(isset($_GET['modif']) && $_GET['modif'] == 1) { ?>
                 <form method="post" action="index.php">
-                <label for="image"></label> 
+                    <label for="image"></label> 
                     <select name="image" id="image">
                         <?php $scandir = scandir("C:/xampp/htdocs/tests/Projet6/BookExchange/images");
                         foreach($scandir as $fichier){
