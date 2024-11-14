@@ -66,7 +66,7 @@
             <div class="list-title">ACTION</div>
         </div>
         <div class="lines"> 
-            <?php foreach($books as $key=>$book) { 
+            <?php if (isset($books)) { foreach($books as $key=>$book) { 
                 if ($key%2==0) {
                     echo "<div class=\"line evenline\">";
                 } else {
@@ -90,7 +90,7 @@
                         <a href="index.php?action=deletebook&id=<?= $book->getId() ?>" <?= Utils::askConfirmation("Êtes-vous sûr de vouloir supprimer ce livre ?") ?> alt="suppression du livre">Supprimer</a>
                     </div>
                 </div>
-            <?php } ?>
+            <?php } } ?>
         </div>
     </section>
 </div>

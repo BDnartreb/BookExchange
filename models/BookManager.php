@@ -30,12 +30,10 @@ class BookManager extends AbstractEntityManager
         FROM book LEFT JOIN user ON book.id_user = user.id WHERE book.status='1' ORDER BY book.id ASC LIMIT $limit";
         
         $result = $this->db->query($sql);
-        $books = [];
+        
+        $b = new BookManager();
+        $books = $b->bookArray($result);
 
-        while ($bookArray = $result->fetch()) {
-            $book = new Book($bookArray);
-            $books[] = $book;
-        }
         return $books;
     }
 
@@ -44,19 +42,32 @@ class BookManager extends AbstractEntityManager
      * @param int $id
      * @return : array $userBooks
      */
-    public function getBooksByUser(int $id) : array
+    public function getBooksByUser(int $id) : ?array
     {
         $sql = "SELECT * FROM book WHERE id_user = :id";
         $result = $this->db->query($sql, ['id' => $id]);
 
+        $b = new BookManager();
+        $books = $b->bookArray($result);
+
+        return $books;
+        
+    }
+
+    /**
+     * Hydrates an array with a list of books selected from the database
+     * @param int $result (reslt of the query to the database)
+     * @return : array $books
+     */
+
+    public function bookArray($result) : array
+    {
         $books = [];
-
         while ($bookArray = $result->fetch()) {
-            $books = new Book($bookArray);
-            $userBooks[] = $books;
-        } // A MUTUALITER AVEC GETBOOKS DANS UNE METHODE
-
-        return $userBooks;
+            $book = new Book($bookArray);
+            $books[] = $book;
+        }
+        return $books; 
     }
 
     /**

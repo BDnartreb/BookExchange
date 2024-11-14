@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`id`, `pseudo`, `email`,`password`, `registration_date`, `avatar_url`) VALUES
 (1, 'CamilleClubLit', 'Camille@home.fr', '$2y$10$bqbCb5Kfoeutiadn6Kl6WuafJFFeN/y6KlYrCD9OD7vFH4ws8.pBW', '2023-09-17', 'Joe.png'),
-(2, 'Alexlecture', 'Alexlect@home.fr', '$2y$10$bqbCb5Kfoeutiadn6Kl6WuafJFFeN/y6KlYrCD9OD7vFH4ws8.pBW', '18/09/2023', 'avatar2.jpg'),
+(2, 'Alexlecture', 'Alexlect@home.fr', '$2y$10$bqbCb5Kfoeutiadn6Kl6WuafJFFeN/y6KlYrCD9OD7vFH4ws8.pBW', '2023-09-18', 'avatar2.jpg'),
 (3, 'Hugo1990_12', 'Hugo@home.fr', '$2y$10$bqbCb5Kfoeutiadn6Kl6WuafJFFeN/y6KlYrCD9OD7vFH4ws8.pBW', '2023-09-18', 'avatar3.jpg'),
 (4, 'Juju1432', 'juju@home.fr', '$2y$10$bqbCb5Kfoeutiadn6Kl6WuafJFFeN/y6KlYrCD9OD7vFH4ws8.pBW', '2023-12-19', 'avatar4.jpg'),
 (5, 'Christiane75014', 'cricri@paris.fr', '$2y$10$bqbCb5Kfoeutiadn6Kl6WuafJFFeN/y6KlYrCD9OD7vFH4ws8.pBW', '2024-01-20', 'avatar5.jpg'),

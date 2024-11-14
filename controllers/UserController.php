@@ -72,8 +72,8 @@ class UserController extends AbstractController {
         if (!$result) {
             throw new Exception ("user non créé !");
         }
- 
-         Utils::redirect('userinfo');
+         
+        Utils::redirect('connection');
     }
 
     /**
@@ -119,7 +119,6 @@ class UserController extends AbstractController {
         $registrationDate = $user->getRegistrationDate();
         $interval = new UserManager();
         $dateInterval = $interval->DateInterval($registrationDate);
-        $messageCount = 3;
  
         $view = new View();
         $view->render("userinfo", $this->getParams(['user' => $user, 'books' => $books, 'dateInterval' => $dateInterval]));

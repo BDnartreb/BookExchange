@@ -8,7 +8,7 @@
 <section class="registration" role="region" aria-label="page de connexion">
     <div class="registration-forms">
         <h1>Inscription</h1>
-        <form class="registration-form" method="get" action="index.php" role="form">
+        <form class="registration-form" method="post" action="index.php" role="form">
             <div class="registration-form">
                 <label for="pseudo"  class="label-text">Pseudo</label>   
                 <input class="white-fieldset" type="text" name="pseudo" id="pseudo" required size="30" maxlength="120">
